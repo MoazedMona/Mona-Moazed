@@ -1774,8 +1774,12 @@ a{color:inherit}
 <noscript>
   <div class="wrap" style="padding-top:56px;padding-bottom:56px">
     <h1 class="dsp" style="font-size:clamp(1.9rem,6vw,3.2rem)">Mona Moazed</h1>
-    <p style="max-width:56ch;margin-top:20px">Product Designer in Auckland, New Zealand, moving into Product Owner. I design workshop and vehicle inspection software for the automotive industry, including SmartCheck Pro (e-WOF), a digital Warrant of Fitness app approved by NZTA, and Auxo Workshop, used by more than 320 businesses.</p>
-    <p style="max-width:56ch">This site needs JavaScript to show the case studies. In the meantime you can reach me directly:</p>
+    <p style="max-width:56ch;margin-top:20px">Product Designer in Auckland, New Zealand, moving into Product Owner. I design workshop and vehicle inspection software for the automotive industry, including Auxo Workshop, used by more than 320 businesses, and SmartCheck Pro (e-WOF), a digital Warrant of Fitness app approved by NZTA.</p>
+    <h2 style="margin-top:36px;font-size:1.3rem">Case studies</h2>
+    <p style="max-width:62ch"><b>Auxo Workshop.</b> Sole UX designer, working with eight developers, on the platform that rebuilds thirty years of Auxo software into one product. Live with 320+ workshop businesses in New Zealand and Australia. Over 90% take bookings online, and the price matrix and margin check help most workshops reach the margin they set.</p>
+    <p style="max-width:62ch"><b>SmartCheck Pro (e-WOF).</b> A mobile responsive web app that takes Warrant of Fitness inspections from paper to tablet. I led the UX from research to handover, and NZTA approved it. Workshops tell us it saves at least 10 minutes on every WOF.</p>
+    <p style="max-width:62ch"><b>Technician app.</b> iOS and Android app that replaced paper job cards. Tested with more than ten technicians in their own workshops, built for gloves, noise and poor signal, and now used by every technician at our customer workshops.</p>
+    <p style="max-width:56ch;margin-top:24px">Turn on JavaScript to see the full case studies. In the meantime you can reach me directly:</p>
     <ul style="list-style:none;padding:0;line-height:2">
       <li><a href="mailto:mona.moazed@gmail.com">mona.moazed@gmail.com</a></li>
       <li><a href="tel:+642102587052">+64 21 025 87052</a></li>
@@ -1980,191 +1984,8 @@ const PHONES=(v,cap)=>({t:'phones',v,cap});
 
 const CASES = [
 {
-  id:'smartcheck', accent:'#1565C0', head:"radial-gradient(1000px 480px at 86% -14%, rgba(38,142,239,.34), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(0,187,165,.12), transparent 60%), linear-gradient(160deg,#00163A,#04234E 60%,#071B33)", tile:'SmartCheck Pro', tint:'linear-gradient(145deg,#001A44,#00306F 55%,#268EEF)', claim:"I replaced New Zealand's paper Warrant of Fitness inspection with a web app",
-  brief:{problem:"Warrant of Fitness inspections in New Zealand were done on paper, which was slow, error prone and hard to keep records from.",role:"Sole UX designer. Research, prototyping, NZTA validation and handover, with a part time contractor in phase one.",outcome:"NZTA approved and in market. Workshops moved from paper to tablets, and tell us it saves at least 10 minutes on every WOF."}, no:'01', tag:'Mobile responsive web app / Compliance',
-  title:'SmartCheck Pro (e&#8209;WOF)',
-  chip:['chip-live','Live, NZTA approved'],
-  sum:'A mobile responsive web app, used on tablets, that lets NZTA certified technicians run fully digital Warrant of Fitness inspections, approved to replace pen and paper checklists.',
-  lede:'Every Warrant of Fitness inspection in New Zealand used to be done on paper. SmartCheck Pro turns that clipboard into a guided digital inspection that NZTA has approved.',
-  spec:[
-    ['My role','Sole UX designer'],
-    ['Team','A part time contractor in phase one, then me alone, with eight developers'],
-    ['Timeline','From December 2024'],
-    ['Platform','Mobile responsive web app, designed tablet first, plus web admin'],
-    ['Tools','Miro, Figma, Ant Design and the Auxo Design System'],
-    ['Status','Approved by NZTA and in market'],
-    ['Prototype','<a href="https://claude.ai/artifact/KqDv5EoVaaRzo3S8jFavmR?sk=M8_7EEVxFqeKHSBFLV8PNg#artboard-c80926ca7869" target="_blank" rel="noopener">Try the prototype &#8599;</a>']
-  ],
-  blocks:[
-    PILLS(['NZTA approved inspection app','Live in market','Sole UX designer']),
-    {t:'stats',v:[['10 min','saved on every WOF, a 25% cut, workshops tell us'],['+33%','inspection capacity, $120 to $160 an hour'],['NZTA','approved it to replace paper']]},
-    H('The problem'),
-    P('Warrant of Fitness inspections in New Zealand were carried out manually, on paper. The process took time, invited human error, and made it hard for a workshop to keep consistent, accurate records.'),
-    P('Auxo saw the opening: what if NZTA certified workshops had a standalone digital application to manage WOF inspections end to end?'),
-
-    H('The vision'),
-    P('We set out to modernise the WOF process by:'),
-    UL([
-      'Replacing paper checklists with a digital, step by step inspection flow',
-      'Letting technicians attach photos and record failure reasons inside the system',
-      'Generating a digital WOF certificate for a pass, or a detailed failure report for a vehicle needing repair',
-      'Improving speed, accuracy and transparency for technicians and vehicle owners alike'
-    ]),
-    P('Once the concept was shaped we ran a prototype demonstration with NZTA, the governing authority for WOF inspections. The demo showed how e-WOF could streamline inspections, cut errors and stay fully compliant. After validation and negotiation, NZTA approved the concept and gave us the green light, despite strong competitors already in the market.'),
-    NOTE('Why this matters','That approval is the whole project. Without it the app is another checklist. With it, the inspection is legally complete inside the software.'),
-    IMG('ewof_1.png','The inspection app on the device technicians asked for. Five tiles cover everything a workshop does with an inspection.','4/3',A.ewofAngled),
-    TABLETS([
-      ['Technician: inspection home', A.scHomeWof, 'A completed WOF inspection on the tablet: every section complete, with totals for not applicable, fail, warning and pass at the top.']
-    ],'The inspection home from a finished WOF. Every section is complete, one item failed and one has a warning, and the totals at the top say so before anyone opens a section.'),
-    SUB('How the section list works'),
-    OL([
-      'Every section is on one screen, so a technician starts wherever the vehicle allows rather than working through in a fixed order.',
-      'The coloured edge shows a section is finished and the count shows how far through it is, so one glance answers both questions.',
-      'A warning or fail shows on the section it belongs to, like the warning on Interior here, so nothing gets lost inside a section that reads as complete.',
-      'The totals at the top add up the whole inspection: not applicable, fail, warning and pass. That is the summary the technician checks before submitting.'
-    ]),
-
-    H('Scope, and who I worked with'),
-    P('Two user groups: technicians doing the inspection, and the admin staff who book it and answer for it afterwards. I ran user journey mapping and whiteboarding with the Product Owner, Product Designer and Business Analyst to agree the requirements, then led the UX from research through to handover, with a part time contractor supporting the design work through phase one. From the second phase on I have carried it alone.'),
-    METHODS(['Market research','Competitive analysis','Interviews','Observation','Customer journey'],['Ideation','User flows','Wireframes','Prototyping','Design system components']),
-
-    H('Understanding the technicians'),
-    P('To design something that actually worked we spent time with NZTA certified technicians and watched how they inspect a vehicle in real life. Through interviews, observation and feedback sessions we learned how they work, the shortcuts they take, and where the paper system hurts. We also learned exactly which fields and options reflect a real inspection, so nobody wastes time entering data that does not apply.'),
-    P('The features that mattered to them:'),
-    CHECKS([
-      'Digital checklists that mirror their paper workflow',
-      'Photos attached as evidence of a failed component',
-      'Predefined failure reasons to cut input errors',
-      'Real time validation and warnings when something does not comply with NZTA regulation'
-    ]),
-
-    H('Competitive analysis'),
-    P('Exploring the market for Warrant of Fitness inspection tools, we found very few competitors offering a digital solution that integrates directly with NZTA systems. Most function as a basic checklist, and still require the inspector to complete manual steps to stay compliant.'),
-    SUB('Example competitors'),
-    UL([
-      '<b>itsallauto.com</b>, where it is unclear whether it integrates with NZTA at all. It offers a digital checklist interface, but after the inspection the technician has to print the form and carry on manually. It adds digital convenience without eliminating manual entry or streamlining compliance.',
-      '<b>WebSAM</b>, which provides a digital form for inspectors to complete. It is not connected to NZTA, so after filling in the form the technician prints it and manually re-enters the data to submit. That duplicates the work and increases the chance of errors.'
-    ]),
-    NOTE('The key differentiator','Unlike its competitors, e-WOF integrates directly with NZTA. That allows an end to end digital workflow with no printing and no manual re-entry, automatic compliance checks and validations, and digital certificates and history tracked against each vehicle. It makes e-WOF not just a checklist app but a full compliance ready solution, in a market where the alternatives still lean heavily on manual processes.','amber'),
-
-    H('Research findings, and what each one changed'),
-    PAIRS([
-      ['<b>Device preference.</b> Most technicians carry an iPad or tablet during inspection, in a noisy, badly lit workshop.','A tablet first, touch friendly interface with large targets and high legibility.'],
-      ['<b>No linear workflow.</b> Technicians start wherever the vehicle lets them start.','Section by section navigation, with mandatory checks still enforced before completion.'],
-      ['<b>Booking is not inspection.</b> Admin staff create a booking with initial vehicle detail, but technicians begin the inspection independently.','Bookings link to inspections so a technician can pick up the job without re-entering anything.'],
-      ['<b>NZTA compliance.</b> Certain fields must be complete before an inspection begins, or the WOF automatically fails.','Mandatory fields surfaced and validated up front, with real time warnings.'],
-      ['<b>History matters.</b> When a vehicle returns, previous results inform the current inspection.','All inspection data saved to history and reachable from inside the inspection flow.'],
-      ['<b>It is standalone, but not separate.</b> Auxo Workshop users can add e-WOF as an add-on module.','Consistent UI patterns and interactions with the main Auxo Workshop system.']
-    ]),
-
-    H('Persona'),
-    P('The primary users are NZTA certified technicians, whose workflow closely matched personas we had already defined for Auxo Workshop. They are practical rather than gadget driven, focused on getting through hands-on work in a busy workshop. They want a tablet in hand, a clear structure they can enter from any point, and accuracy, compliance and speed above everything else. Building on the existing persona let us move quickly while still tailoring the app for inspection work.'),
-    IMG('eWOF - Persona.jpg (1 of 2)','Mark, the vehicle inspector. Manual VIN checks, slow recheck processes and customers misreading comments as failures were the pain points that shaped the inspection flow.','900/1107',A.personaMark),
-    IMG('eWOF - Persona.jpg (2 of 2)','Karen, the workshop administrator. She is the reason section order is configurable per workshop and why records are built to survive a compliance audit.','900/984',A.personaKaren),
-    P('All of them work in New Zealand, which matters more than it sounds. The Warrant of Fitness system is unique to this country, so every design decision had to sit inside NZTA regulation rather than a generic inspection pattern.'),
-
-    H('Design process'),
-    P('Each epic ran through the same seven steps I use on Auxo Workshop, from user journey to handover. What changed here was the validation step: instead of testing with customers and moving on, every flow had to survive a review against NZTA regulation before it could be built.'),
-
-    H('Initial design, mid fidelity'),
-    OL([
-      '<strong>Consistency with the design system.</strong> I reused components from the existing Auxo Design System, which kept the experience unified with Auxo Workshop and sped the work up, since many patterns were already defined.',
-      '<strong>Device optimisation.</strong> Designed primarily for iPad and tablet, optimised for touch, readability and portability in a workshop.',
-      '<strong>Iterative feedback.</strong> Early designs and prototypes went to the team, and iterations focused on usability, workflow flexibility and compliance.'
-    ]),
-    LINK('Mid fidelity prototype in Figma','https://www.figma.com/design/yG9IhKy9aMcbZfvjVZfR6D/eWOF?node-id=5-204&t=AVnsEhgqjYXiQAU8-1'),
-    IMG('mid-fi_WOF.png','The full mid fidelity set, from login through inspection to the generated checksheet. Open it to read the screens.','34/13',A.ewofMidfi),
-    VID(A.ewofVideo, A.ewofPoster, 'Mid fidelity prototype walkthrough','Forty seconds through the flow as the team reviewed it: create the inspection, work a section, record a fail, submit.'),
-
-    H('The iteration that changed the app'),
-    P('This came out of user testing on the mid fidelity prototype, before development had started. In the first design, inspectors had to scroll the checklist to find each section. It slowed the workflow, and it did not match how technicians work.'),
-    NOTE('Why the timing mattered','Catching it at the prototype stage meant the fix cost a few screens. The same finding after build would have meant reworking the navigation, the section state and the compliance validation that hangs off it. This is the argument for testing before a developer writes anything, and it is the clearest example of it on this project.'),
-    UL([
-      'The main page was redesigned to show every section at a glance',
-      'Inspectors choose which section to work on first, so a flexible workflow is supported rather than tolerated',
-      'Workshops can configure section order in system settings to match their own inspection routine'
-    ]),
-    P('It made a clear difference to how quickly an inspection moves. Technicians work in the order that makes sense for the vehicle in front of them, and every check still has to be completed before the inspection can close.'),
-    IMG('Archive_WOF.png','The section navigation redesign in context, with every state of the checklist worked through. Open it full size.','11/10',A.ewofSections),
-
-    H('Final prototype and validation'),
-    UL([
-      'The main page supports flexible section selection',
-      'Workflows and UI aligned to user needs and NZTA compliance rules',
-      'The prototype was tested internally with multiple users for usability, efficiency and accuracy'
-    ]),
-    P('With those improvements the final prototype was ready to present to NZTA for review and approval, as a validated, user centred solution for digital Warrant of Fitness inspections.'),
-    IMG('dashboard_in_ipad_display.png','The finished dashboard, straight on. Bookings, in progress, rechecks and history, with the primary action given the most weight.','3/4',A.ewofDash),
-    IMG('WOF_Prototype-V1.png','The validated flow end to end, the version taken to NZTA for approval.','34/10',A.ewofFlow),
-    LINK('Final prototype in Figma','https://www.figma.com/design/yG9IhKy9aMcbZfvjVZfR6D/eWOF?node-id=160-8702&t=eMdooEkfAmMKvHBC-1'),
-
-    H('Building the checklist in phases'),
-    P('The checklist component grew with the product rather than arriving fully formed.'),
-    OL([
-      '<strong>Basic checkboxes.</strong> Mark an item pass or fail. Core workflow, built for speed.',
-      '<strong>Failure reasons and position.</strong> Select a predefined failure reason and specify the position of a failed component, for accuracy and NZTA compliance.',
-      '<strong>Photos on failed and warning items.</strong> Better documentation, and more transparency for the vehicle owner.',
-      '<strong>Photos everywhere.</strong> Extended to every checklist item, supporting detailed reporting and complete records.'
-    ]),
-    IMG('Inspection.png','Every state of the checklist item across the four phases: pass, not applicable, warning, fail, then failure reasons, positions and photo evidence.','4/5',A.ewofStates),
-
-    H('Breaking the flow down for development'),
-    P('Once the prototype and components were validated, the inspection workflow was split into epics covering checklist navigation and section selection, pass and fail marking with failure reasons, photo attachments, history and previous results, and NZTA compliance validation.'),
-    P('Supporting system work was specified alongside it:'),
-    UL([
-      'System configuration: workshop settings, section order, compliance rules',
-      'Staff and user management: adding staff, assigning roles, defining permissions',
-      'Form validation: required fields and rules',
-      'Web display and responsiveness: how pages and data appear across devices'
-    ]),
-    P('Every epic carried user stories, acceptance criteria and UI specifications, so developers had a clear roadmap.'),
-
-    H('The document at the end of it'),
-    P('The inspection produces the artefact NZTA and the vehicle owner actually need: a checksheet carrying the result of every item, the reasons for rejection, and the re-inspection outcome alongside the original fail. Rejected items are struck through rather than deleted, so the history of the vehicle stays readable on one page.'),
-    IMG('WOF_Faild_and_rechecked.png','A failed inspection and its passed re-inspection on the same checksheet, with the rejected items struck through.','603/850',A.wofSheet),
-
-    {t:'html',v:'<figure class="roi rv"><figcaption class="mono">What 10 minutes is worth on one WOF</figcaption><table><thead><tr><th scope="col">Measure</th><th scope="col">On paper</th><th scope="col">With SmartCheck Pro</th></tr></thead><tbody><tr><th scope="row">Time per WOF</th><td>40 min</td><td><b>30 min</b></td></tr><tr><th scope="row">Revenue per inspection hour</th><td>$120</td><td><b>$160</b></td></tr></tbody></table><p>At $80 for a 40 minute WOF, the 10 minutes saved is worth $20 of inspector time. That is 33% more inspection capacity: every three WOFs free up enough time for a fourth, worth another $80 if the slot is filled.</p><p class="roi-note">Based on workshop feedback of at least 10 minutes saved per WOF, and assuming continuous bookings. The $20 is time freed up, not an automatic increase in profit.</p></figure>'},
-
-    H('Customise checksheet'),
-    P('This is the checksheet a workshop can build itself. The first release did one inspection very well, the WOF, exactly as NZTA defines it. Phase two turned that into a tool a workshop can shape, so the same app covers a 25 point check, a brake check, a pre purchase inspection or anything else they sell.'),
-    P('Templates are built in settings rather than requested from us. A workshop names a service, groups it into categories, and adds its own questions, then copies or edits an existing template rather than starting again. The same screen holds the compliance detail that has to travel with every inspection: NZTA authority number, certificate of appointment date, the workshop logo, which inspection groups they are authorised for, and where customer responses are emailed.'),
-    IMG('checksheet-templates.png','The Templates screen in the prototype. The workshop\u2019s WOF templates and its own point checks sit in one searchable list, and the selected template opens its sections on the right, ready to reorder.','2880/1800',A.scTemplates,'browser'),
-    NOTE('What stays fixed','The WOF itself is not editable, and it should not be. A workshop can build any checksheet it likes around it, but the regulated inspection keeps the structure NZTA approved. Letting a customer edit that would put their certification at risk.'),
-    P('At the start of an inspection the technician picks a vehicle type, passenger, trailer, motorcycle, COF A or COF B, and then a template. Searchable, because a busy workshop will end up with a long list, and the list is theirs rather than ours.'),
-    IMG('select-template.png','Choosing the inspection type, then the template. The second screen is the workshop\u2019s own library, searchable.','880/2684',A.scPick),
-    P('Once picked, the template opens the same way the WOF does. The sections are the workshop\u2019s own, and a walkaround shows up as one of them, counting marks rather than checks.'),
-    TABLETS([
-      ['Technician: custom checksheet', A.scHomeCustom, 'A 25 point check in progress, with Vehicle Details, Vehicle Walk Around, Safety, Under Bonnet and Chassis as sections.']
-    ],'A workshop\u2019s own 25 point check on the tablet. Same layout and totals as the WOF, different sections, with the walkaround counted in marks.'),
-
-    SUB('What the workshops said'),
-    P('Showing it to workshop owners and technicians was the moment it landed, and their reaction was not about the builder. It was about where the result goes. A custom checksheet can be attached to a service in Auxo Workshop, which means the technician opens it in the mobile app next to the job, and the completed result and its history stay in the system against the vehicle.'),
-    NOTE('Why they called it a game changer','Jobs finish faster, and nobody has to type everything into a note just so they do not forget it. Notes had been doing the work of a record, which is why they were long, inconsistent and impossible to search later. A structured checksheet keeps the detail without anyone having to remember to write it down.','amber'),
-    P('The prototype below is the one the workshops used in those sessions. Build a template, then start an inspection and pick it.'),
-    LINK('Try the prototype','https://claude.ai/artifact/KqDv5EoVaaRzo3S8jFavmR?sk=M8_7EEVxFqeKHSBFLV8PNg#artboard-c80926ca7869'),
-
-    H('The walkaround'),
-    P('Not every inspection is a pass or fail checklist. A walkaround records the condition of a vehicle as it arrives: where the dents are, where the scratches are, what was already there before anyone touched it.'),
-    P('It is drawn on the vehicle rather than described in a text field, with a standard set of views so two technicians mark damage the same way. The silhouettes are per vehicle type, which is how a boat ends up in a vehicle inspection app: the same workshop that services vans also hauls out boats, and bow, stern, port, starboard and deck are the views that make sense there.'),
-    IMG('walkaround-diagrams.png','Damage marking for a van and for a boat, each with its own views, and one shared key: dent, scratch, other.','1300/867',A.scWalk),
-    P('The walkaround is switched on per template. The admin ticks it as a section in the checksheet template and picks the vehicle type, which sets the silhouettes the technician gets. On the tablet the technician either taps to mark a point or draws around the damage, then sets the type and severity, and every mark lands in a numbered list underneath with its own comment.'),
-    TABLETS([
-      ['Admin: set up in the template', A.scWalkTpl, 'Checksheet template with the Vehicle Walk Around section ticked and Car selected as the vehicle type.'],
-      ['Technician: during the inspection', A.scWalkApp, 'Vehicle walk around on the tablet, with one marked dent and one traced area, each listed below with type and comment.']
-    ],'The same walkaround from both sides: the admin adds it to a checksheet template and chooses the vehicle type, then the technician marks or draws on the diagram and confirms type, severity and a comment.'),
-
-    H('QMS forms, in research now'),
-    P('The piece I am working on now is adding NZTA quality management system (QMS) forms to SmartCheck Pro. It is at the research stage, and nothing is designed yet.'),
-    P('I am visiting workshops to see how they handle QMS today, and looking at how competitors approach it. What I am after is the easiest way to fit these forms into how a workshop already works, and I want to test that with customers before anything goes to development.'),
-
-    H('What is next'),
-    P('Connecting results straight back into Auxo Workshop, so failed items, comments, photos and technician notes arrive on the job card without anyone re-keying them. That is the last gap between the inspection bay and the front desk.')
-
-  ]
-},
-{
   id:'auxo-workshop', accent:'#00756A', head:"radial-gradient(1000px 480px at 86% -14%, rgba(0,187,165,.30), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(38,142,239,.16), transparent 60%), linear-gradient(160deg,#001A3A,#03284C 60%,#06192E)", tile:'Auxo Workshop', tint:'linear-gradient(145deg,#001A44,#00396B 55%,#00BBA5)', claim:"I designed the platform 320+ workshops run their day on",
-  brief:{problem:"Thirty years of Auxo products, and software that recorded a workshop's day instead of reducing it.",role:"Sole UX designer across the platform from concept to delivery, later also Product Owner. Established the Auxo Design System.",outcome:"320+ workshops in New Zealand and Australia have moved off paper onto it. Over 90% take bookings online, and larger brand workshops report revenue up at least 20%."}, no:'02', tag:'Platform design / 0 to 1',
+  brief:{problem:"Thirty years of Auxo products, and software that recorded a workshop's day instead of reducing it.",role:"Sole UX designer across the platform from concept to delivery, later also Product Owner. Established the Auxo Design System.",outcome:"320+ workshops in New Zealand and Australia have moved off paper onto it. Over 90% take bookings online, and larger brand workshops report revenue up at least 20%."}, no:'01', tag:'Platform design / Platform rebuild',
   title:'Auxo Workshop',
   chip:['chip-live','Live, 320+ businesses'],
   sum:'A workshop management platform that helps automotive businesses run jobs, bookings and customers from one place.',
@@ -2353,6 +2174,7 @@ const CASES = [
       '<b>Template management.</b> A dedicated view to create, edit and save templates, which can be named, categorised and shared across teams.',
       '<b>Clear use cases.</b> Fixed templates suit standard packages such as routine maintenance, inspections and recurring services.'
     ]),
+    NOTE('Product decision','We did not replace smart templates. We kept them and added fixed templates alongside, because the feedback came from some kinds of workshop, not all of them. Removing what worked for most customers to fix it for a few would have been the wrong trade.'),
     NOTE('Impact','Customers work the way their own process works. Confusion from automated suggestions dropped, automation and manual control now sit side by side, and adoption improved among admin-heavy teams and franchise operations.','amber'),
     IMG('fixed template.png','Creating a fixed template in system configuration: the template list, a new empty template, the template with its labour and parts filled in, and a preview before it is saved.','1047/770',A.awFixedTpl),
 
@@ -2427,6 +2249,189 @@ const CASES = [
 
     SUB('What comes next'),
     P('Beyond these two, the AI roadmap includes estimates at online booking, job scheduling, parts suggestions and customer communications. Each one starts the same way: with the job it saves someone from doing by hand.')
+
+  ]
+},
+{
+  id:'smartcheck', accent:'#1565C0', head:"radial-gradient(1000px 480px at 86% -14%, rgba(38,142,239,.34), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(0,187,165,.12), transparent 60%), linear-gradient(160deg,#00163A,#04234E 60%,#071B33)", tile:'SmartCheck Pro', tint:'linear-gradient(145deg,#001A44,#00306F 55%,#268EEF)', claim:"I took Warrant of Fitness inspections from paper to an NZTA-approved web app",
+  brief:{problem:"Warrant of Fitness inspections in New Zealand were done on paper, which was slow, error prone and hard to keep records from.",role:"Sole UX designer. Research, prototyping, NZTA validation and handover, with a part time contractor in phase one.",outcome:"NZTA approved and in market. Workshops moved from paper to tablets, and tell us it saves at least 10 minutes on every WOF."}, no:'02', tag:'Mobile responsive web app / Compliance',
+  title:'SmartCheck Pro (e&#8209;WOF)',
+  chip:['chip-live','Live, NZTA approved'],
+  sum:'A mobile responsive web app, used on tablets, that lets NZTA certified technicians run fully digital Warrant of Fitness inspections, approved to replace pen and paper checklists.',
+  lede:'Every Warrant of Fitness inspection in New Zealand used to be done on paper. SmartCheck Pro turns that clipboard into a guided digital inspection that NZTA has approved.',
+  spec:[
+    ['My role','Sole UX designer'],
+    ['Team','A part time contractor in phase one, then me alone, with eight developers'],
+    ['Timeline','From December 2024'],
+    ['Platform','Mobile responsive web app, designed tablet first, plus web admin'],
+    ['Tools','Miro, Figma, Ant Design and the Auxo Design System'],
+    ['Status','Approved by NZTA and in market'],
+    ['Prototype','<a href="https://claude.ai/artifact/KqDv5EoVaaRzo3S8jFavmR?sk=M8_7EEVxFqeKHSBFLV8PNg#artboard-c80926ca7869" target="_blank" rel="noopener">Try the prototype &#8599;</a>']
+  ],
+  blocks:[
+    PILLS(['NZTA approved inspection app','Live in market','Sole UX designer']),
+    {t:'stats',v:[['10 min','saved on every WOF, a 25% cut, workshops tell us'],['+33%','inspection capacity, up to $160 an hour from $120'],['NZTA','approved it to replace paper']]},
+    H('The problem'),
+    P('Warrant of Fitness inspections in New Zealand were carried out manually, on paper. The process took time, invited human error, and made it hard for a workshop to keep consistent, accurate records.'),
+    P('Auxo saw the opening: what if NZTA certified workshops had a standalone digital application to manage WOF inspections end to end?'),
+
+    H('The vision'),
+    P('We set out to modernise the WOF process by:'),
+    UL([
+      'Replacing paper checklists with a digital, step by step inspection flow',
+      'Letting technicians attach photos and record failure reasons inside the system',
+      'Generating a digital WOF certificate for a pass, or a detailed failure report for a vehicle needing repair',
+      'Improving speed, accuracy and transparency for technicians and vehicle owners alike'
+    ]),
+    P('Once the concept was shaped we ran a prototype demonstration with NZTA, the governing authority for WOF inspections. The demo showed how e-WOF could streamline inspections, cut errors and stay fully compliant. After validation and negotiation, NZTA approved the concept and gave us the green light, despite strong competitors already in the market.'),
+    NOTE('Why this matters','That approval is the whole project. Without it the app is another checklist. With it, the inspection is legally complete inside the software.'),
+    IMG('ewof_1.png','The inspection app on the device technicians asked for. Five tiles cover everything a workshop does with an inspection.','4/3',A.ewofAngled),
+    TABLETS([
+      ['Technician: inspection home', A.scHomeWof, 'A completed WOF inspection on the tablet: every section complete, with totals for not applicable, fail, warning and pass at the top.']
+    ],'The inspection home from a finished WOF. Every section is complete, one item failed and one has a warning, and the totals at the top say so before anyone opens a section.'),
+    SUB('How the section list works'),
+    OL([
+      'Every section is on one screen, so a technician starts wherever the vehicle allows rather than working through in a fixed order.',
+      'The coloured edge shows a section is finished and the count shows how far through it is, so one glance answers both questions.',
+      'A warning or fail shows on the section it belongs to, like the warning on Interior here, so nothing gets lost inside a section that reads as complete.',
+      'The totals at the top add up the whole inspection: not applicable, fail, warning and pass. That is the summary the technician checks before submitting.'
+    ]),
+
+    H('Scope, and who I worked with'),
+    P('Two user groups: technicians doing the inspection, and the admin staff who book it and answer for it afterwards. I ran user journey mapping and whiteboarding with the Product Owner, Product Designer and Business Analyst to agree the requirements, then led the UX from research through to handover, with a part time contractor supporting the design work through phase one. From the second phase on I have carried it alone.'),
+    METHODS(['Market research','Competitive analysis','Interviews','Observation','Customer journey'],['Ideation','User flows','Wireframes','Prototyping','Design system components']),
+
+    H('Understanding the technicians'),
+    P('To design something that actually worked we spent time with NZTA certified technicians and watched how they inspect a vehicle in real life. Through interviews, observation and feedback sessions we learned how they work, the shortcuts they take, and where the paper system hurts. We also learned exactly which fields and options reflect a real inspection, so nobody wastes time entering data that does not apply.'),
+    P('The features that mattered to them:'),
+    CHECKS([
+      'Digital checklists that mirror their paper workflow',
+      'Photos attached as evidence of a failed component',
+      'Predefined failure reasons to cut input errors',
+      'Real time validation and warnings when something does not comply with NZTA regulation'
+    ]),
+
+    H('Competitive analysis'),
+    P('Exploring the market for Warrant of Fitness inspection tools, we found very few competitors offering a digital solution that integrates directly with NZTA systems. Most function as a basic checklist, and still require the inspector to complete manual steps to stay compliant.'),
+    SUB('Example competitors'),
+    UL([
+      '<b>itsallauto.com</b>, where it is unclear whether it integrates with NZTA at all. It offers a digital checklist interface, but after the inspection the technician has to print the form and carry on manually. It adds digital convenience without eliminating manual entry or streamlining compliance.',
+      '<b>WebSAM</b>, which provides a digital form for inspectors to complete. It is not connected to NZTA, so after filling in the form the technician prints it and manually re-enters the data to submit. That duplicates the work and increases the chance of errors.'
+    ]),
+    NOTE('The key differentiator','Unlike its competitors, e-WOF integrates directly with NZTA. That allows an end to end digital workflow with no printing and no manual re-entry, automatic compliance checks and validations, and digital certificates and history tracked against each vehicle. It makes e-WOF not just a checklist app but a full compliance ready solution, in a market where the alternatives still lean heavily on manual processes.','amber'),
+
+    H('Research findings, and what each one changed'),
+    PAIRS([
+      ['<b>Device preference.</b> Most technicians carry an iPad or tablet during inspection, in a noisy, badly lit workshop.','A tablet first, touch friendly interface with large targets and high legibility.'],
+      ['<b>No linear workflow.</b> Technicians start wherever the vehicle lets them start.','Section by section navigation, with mandatory checks still enforced before completion.'],
+      ['<b>Booking is not inspection.</b> Admin staff create a booking with initial vehicle detail, but technicians begin the inspection independently.','Bookings link to inspections so a technician can pick up the job without re-entering anything.'],
+      ['<b>NZTA compliance.</b> Certain fields must be complete before an inspection begins, or the WOF automatically fails.','Mandatory fields surfaced and validated up front, with real time warnings.'],
+      ['<b>History matters.</b> When a vehicle returns, previous results inform the current inspection.','All inspection data saved to history and reachable from inside the inspection flow.'],
+      ['<b>It is standalone, but not separate.</b> Auxo Workshop users can add e-WOF as an add-on module.','Consistent UI patterns and interactions with the main Auxo Workshop system.']
+    ]),
+
+    H('Persona'),
+    P('The primary users are NZTA certified technicians, whose workflow closely matched personas we had already defined for Auxo Workshop. They are practical rather than gadget driven, focused on getting through hands-on work in a busy workshop. They want a tablet in hand, a clear structure they can enter from any point, and accuracy, compliance and speed above everything else. Building on the existing persona let us move quickly while still tailoring the app for inspection work.'),
+    IMG('eWOF - Persona.jpg (1 of 2)','Mark, the vehicle inspector. Manual VIN checks, slow recheck processes and customers misreading comments as failures were the pain points that shaped the inspection flow.','900/1107',A.personaMark),
+    IMG('eWOF - Persona.jpg (2 of 2)','Karen, the workshop administrator. She is the reason section order is configurable per workshop and why records are built to survive a compliance audit.','900/984',A.personaKaren),
+    P('All of them work in New Zealand, which matters more than it sounds. The Warrant of Fitness system is unique to this country, so every design decision had to sit inside NZTA regulation rather than a generic inspection pattern.'),
+
+    H('Design process'),
+    P('Each epic ran through the same seven steps I use on Auxo Workshop, from user journey to handover. What changed here was the validation step: instead of testing with customers and moving on, every flow had to survive a review against NZTA regulation before it could be built.'),
+
+    H('Initial design, mid fidelity'),
+    OL([
+      '<strong>Consistency with the design system.</strong> I reused components from the existing Auxo Design System, which kept the experience unified with Auxo Workshop and sped the work up, since many patterns were already defined.',
+      '<strong>Device optimisation.</strong> Designed primarily for iPad and tablet, optimised for touch, readability and portability in a workshop.',
+      '<strong>Iterative feedback.</strong> Early designs and prototypes went to the team, and iterations focused on usability, workflow flexibility and compliance.'
+    ]),
+    LINK('Mid fidelity prototype in Figma','https://www.figma.com/design/yG9IhKy9aMcbZfvjVZfR6D/eWOF?node-id=5-204&t=AVnsEhgqjYXiQAU8-1'),
+    IMG('mid-fi_WOF.png','The full mid fidelity set, from login through inspection to the generated checksheet. Open it to read the screens.','34/13',A.ewofMidfi),
+    VID(A.ewofVideo, A.ewofPoster, 'Mid fidelity prototype walkthrough','Forty seconds through the flow as the team reviewed it: create the inspection, work a section, record a fail, submit.'),
+
+    H('The iteration that changed the app'),
+    P('This came out of user testing on the mid fidelity prototype, before development had started. In the first design, inspectors had to scroll the checklist to find each section. It slowed the workflow, and it did not match how technicians work.'),
+    NOTE('Why the timing mattered','Catching it at the prototype stage meant the fix cost a few screens. The same finding after build would have meant reworking the navigation, the section state and the compliance validation that hangs off it. This is the argument for testing before a developer writes anything, and it is the clearest example of it on this project.'),
+    UL([
+      'The main page was redesigned to show every section at a glance',
+      'Inspectors choose which section to work on first, so a flexible workflow is supported rather than tolerated',
+      'Workshops can configure section order in system settings to match their own inspection routine'
+    ]),
+    P('It made a clear difference to how quickly an inspection moves. Technicians work in the order that makes sense for the vehicle in front of them, and every check still has to be completed before the inspection can close.'),
+    IMG('Archive_WOF.png','The section navigation redesign in context, with every state of the checklist worked through. Open it full size.','11/10',A.ewofSections),
+
+    H('Final prototype and validation'),
+    UL([
+      'The main page supports flexible section selection',
+      'Workflows and UI aligned to user needs and NZTA compliance rules',
+      'The prototype was tested internally with multiple users for usability, efficiency and accuracy'
+    ]),
+    P('With those improvements the final prototype was ready to present to NZTA for review and approval, as a validated, user centred solution for digital Warrant of Fitness inspections.'),
+    IMG('dashboard_in_ipad_display.png','The finished dashboard, straight on. Bookings, in progress, rechecks and history, with the primary action given the most weight.','3/4',A.ewofDash),
+    IMG('WOF_Prototype-V1.png','The validated flow end to end, the version taken to NZTA for approval.','34/10',A.ewofFlow),
+    LINK('Final prototype in Figma','https://www.figma.com/design/yG9IhKy9aMcbZfvjVZfR6D/eWOF?node-id=160-8702&t=eMdooEkfAmMKvHBC-1'),
+
+    H('Building the checklist in phases'),
+    P('The checklist component grew with the product rather than arriving fully formed.'),
+    OL([
+      '<strong>Basic checkboxes.</strong> Mark an item pass or fail. Core workflow, built for speed.',
+      '<strong>Failure reasons and position.</strong> Select a predefined failure reason and specify the position of a failed component, for accuracy and NZTA compliance.',
+      '<strong>Photos on failed and warning items.</strong> Better documentation, and more transparency for the vehicle owner.',
+      '<strong>Photos everywhere.</strong> Extended to every checklist item, supporting detailed reporting and complete records.'
+    ]),
+    IMG('Inspection.png','Every state of the checklist item across the four phases: pass, not applicable, warning, fail, then failure reasons, positions and photo evidence.','4/5',A.ewofStates),
+
+    H('Breaking the flow down for development'),
+    P('Once the prototype and components were validated, the inspection workflow was split into epics covering checklist navigation and section selection, pass and fail marking with failure reasons, photo attachments, history and previous results, and NZTA compliance validation.'),
+    P('Supporting system work was specified alongside it:'),
+    UL([
+      'System configuration: workshop settings, section order, compliance rules',
+      'Staff and user management: adding staff, assigning roles, defining permissions',
+      'Form validation: required fields and rules',
+      'Web display and responsiveness: how pages and data appear across devices'
+    ]),
+    P('Every epic carried user stories, acceptance criteria and UI specifications, so developers had a clear roadmap.'),
+
+    H('The document at the end of it'),
+    P('The inspection produces the artefact NZTA and the vehicle owner actually need: a checksheet carrying the result of every item, the reasons for rejection, and the re-inspection outcome alongside the original fail. Rejected items are struck through rather than deleted, so the history of the vehicle stays readable on one page.'),
+    IMG('WOF_Faild_and_rechecked.png','A failed inspection and its passed re-inspection on the same checksheet, with the rejected items struck through.','603/850',A.wofSheet),
+
+    {t:'html',v:'<figure class="roi rv"><figcaption class="mono">What 10 minutes is worth on one WOF</figcaption><table><thead><tr><th scope="col">Measure</th><th scope="col">On paper</th><th scope="col">With SmartCheck Pro</th></tr></thead><tbody><tr><th scope="row">Time per WOF</th><td>40 min</td><td><b>30 min</b></td></tr><tr><th scope="row">Revenue per inspection hour</th><td>$120</td><td><b>$160</b></td></tr></tbody></table><p>At $80 for a 40 minute WOF, the 10 minutes saved is worth $20 of inspector time. That is 33% more inspection capacity: every three WOFs free up enough time for a fourth, worth another $80 if the slot is filled.</p><p class="roi-note">Based on workshop feedback of at least 10 minutes saved per WOF, and assuming continuous bookings. The $20 is time freed up, not an automatic increase in profit.</p></figure>'},
+
+    H('Customise checksheet'),
+    P('This is the checksheet a workshop can build itself. The first release did one inspection very well, the WOF, exactly as NZTA defines it. Phase two turned that into a tool a workshop can shape, so the same app covers a 25 point check, a brake check, a pre purchase inspection or anything else they sell.'),
+    P('Templates are built in settings rather than requested from us. A workshop names a service, groups it into categories, and adds its own questions, then copies or edits an existing template rather than starting again. The same screen holds the compliance detail that has to travel with every inspection: NZTA authority number, certificate of appointment date, the workshop logo, which inspection groups they are authorised for, and where customer responses are emailed.'),
+    IMG('checksheet-templates.png','The Templates screen in the prototype. The workshop\u2019s WOF templates and its own point checks sit in one searchable list, and the selected template opens its sections on the right, ready to reorder.','2880/1800',A.scTemplates,'browser'),
+    NOTE('What stays fixed','The WOF itself is not editable, and it should not be. A workshop can build any checksheet it likes around it, but the regulated inspection keeps the structure NZTA approved. Letting a customer edit that would put their certification at risk.'),
+    P('At the start of an inspection the technician picks a vehicle type, passenger, trailer, motorcycle, COF A or COF B, and then a template. Searchable, because a busy workshop will end up with a long list, and the list is theirs rather than ours.'),
+    IMG('select-template.png','Choosing the inspection type, then the template. The second screen is the workshop\u2019s own library, searchable.','880/2684',A.scPick),
+    P('Once picked, the template opens the same way the WOF does. The sections are the workshop\u2019s own, and a walkaround shows up as one of them, counting marks rather than checks.'),
+    TABLETS([
+      ['Technician: custom checksheet', A.scHomeCustom, 'A 25 point check in progress, with Vehicle Details, Vehicle Walk Around, Safety, Under Bonnet and Chassis as sections.']
+    ],'A workshop\u2019s own 25 point check on the tablet. Same layout and totals as the WOF, different sections, with the walkaround counted in marks.'),
+
+    SUB('What the workshops said'),
+    P('Showing it to workshop owners and technicians was the moment it landed, and their reaction was not about the builder. It was about where the result goes. A custom checksheet can be attached to a service in Auxo Workshop, which means the technician opens it in the mobile app next to the job, and the completed result and its history stay in the system against the vehicle.'),
+    NOTE('Why they called it a game changer','Jobs finish faster, and nobody has to type everything into a note just so they do not forget it. Notes had been doing the work of a record, which is why they were long, inconsistent and impossible to search later. A structured checksheet keeps the detail without anyone having to remember to write it down.','amber'),
+    P('The prototype below is the one the workshops used in those sessions. Build a template, then start an inspection and pick it.'),
+    LINK('Try the prototype','https://claude.ai/artifact/KqDv5EoVaaRzo3S8jFavmR?sk=M8_7EEVxFqeKHSBFLV8PNg#artboard-c80926ca7869'),
+
+    H('The walkaround'),
+    P('Not every inspection is a pass or fail checklist. A walkaround records the condition of a vehicle as it arrives: where the dents are, where the scratches are, what was already there before anyone touched it.'),
+    P('It is drawn on the vehicle rather than described in a text field, with a standard set of views so two technicians mark damage the same way. The silhouettes are per vehicle type, which is how a boat ends up in a vehicle inspection app: the same workshop that services vans also hauls out boats, and bow, stern, port, starboard and deck are the views that make sense there.'),
+    IMG('walkaround-diagrams.png','Damage marking for a van and for a boat, each with its own views, and one shared key: dent, scratch, other.','1300/867',A.scWalk),
+    P('The walkaround is switched on per template. The admin ticks it as a section in the checksheet template and picks the vehicle type, which sets the silhouettes the technician gets. On the tablet the technician either taps to mark a point or draws around the damage, then sets the type and severity, and every mark lands in a numbered list underneath with its own comment.'),
+    TABLETS([
+      ['Admin: set up in the template', A.scWalkTpl, 'Checksheet template with the Vehicle Walk Around section ticked and Car selected as the vehicle type.'],
+      ['Technician: during the inspection', A.scWalkApp, 'Vehicle walk around on the tablet, with one marked dent and one traced area, each listed below with type and comment.']
+    ],'The same walkaround from both sides: the admin adds it to a checksheet template and chooses the vehicle type, then the technician marks or draws on the diagram and confirms type, severity and a comment.'),
+
+    H('QMS forms, in research now'),
+    P('The piece I am working on now is adding NZTA quality management system (QMS) forms to SmartCheck Pro. It is at the research stage, and nothing is designed yet.'),
+    P('I am visiting workshops to see how they handle QMS today, and looking at how competitors approach it. What I am after is the easiest way to fit these forms into how a workshop already works, and I want to test that with customers before anything goes to development.'),
+
+    H('What is next'),
+    P('Connecting results straight back into Auxo Workshop, so failed items, comments, photos and technician notes arrive on the job card without anyone re-keying them. That is the last gap between the inspection bay and the front desk.')
 
   ]
 },
@@ -2546,6 +2551,7 @@ const CASES = [
 
     H('Continuous time clocking'),
     P('User testing changed the order of the roadmap. Continuous time clocking, making a booking and approving online booking requests turned out to matter more than what we had planned next, so we changed the priority and built those three in phase two, along with the connection to SmartCheck Pro inspections.'),
+    NOTE('Product decision','Testing moved continuous clocking, creating bookings and approving online bookings ahead of what we had planned, so the roadmap changed. I also cut date filtering from search rather than ship it half solved.'),
 
     P('A technician is clocked on to one job or one non-job activity at a time. Switching to another job closes the current clocking and opens the next, so the day has no gaps to fill in later. Clocking off a job asks for a reason, such as waiting for parts or job completed, and a bar showing the active job and elapsed time stays on every tab.'),
     PHONES([
@@ -3523,6 +3529,7 @@ function pageHome(){
             <span><b><em>clipboard</em>.</b></span>
           </h1>
           <p class="hero-sub">Software engineer first, artist always. I spend my days with <b>technicians in noisy workshops</b>, quietly taking the friction out of their day.</p>
+          <p class="hero-sub">Best fit: complex B2B and field tools, regulated workflows, and teams where I am the only designer.</p>
           <div class="cta-row">
             <a class="btn-a" href="#work">See my work <span aria-hidden="true">&#8595;</span></a>
             <a class="btn-b" href="mailto:mona.moazed@gmail.com">Email me</a>
@@ -3634,7 +3641,7 @@ function pageHome(){
   `;
 }
 
-const STORIES = {"smartcheck": [["Context", "Turning a paper inspection into a legal digital one", "Every Warrant of Fitness in New Zealand was done on paper: slow, easy to get wrong, and hard to keep records from. Auxo wanted a standalone app that NZTA certified workshops could use from start to finish. I led the UX from research through to handover, with a part time contractor in phase one and on my own since. The whole project hung on one thing: NZTA approving it, so the inspection is legally complete inside the software.", ["ewof_1.png"], ["The problem", "The vision", "Scope, and who I worked with"]], ["Discover", "Watching technicians inspect real vehicles", "I spent time with NZTA certified technicians in their workshops, through interviews, observation and feedback sessions, to see how an inspection really runs and where paper hurts. They wanted checklists that mirror their paper flow, photos as evidence, predefined failure reasons, and a warning before they break a rule. The competitors I looked at were digital checklists that still ended in printing and re-keying. Direct NZTA integration became the difference.", [], ["Understanding the technicians", "Competitive analysis"]], ["Define", "What each finding changed", "Each finding became a design rule. Technicians carry a tablet in a noisy, badly lit workshop, so the app is tablet first with large targets. They start wherever the vehicle lets them, so there is no fixed order, but every mandatory check is still enforced. Bookings link to inspections so nothing is entered twice. Two personas carried this: Mark, the inspector, and Karen, the administrator who answers for the record in an audit.", ["eWOF - Persona.jpg (1 of 2)"], ["Research findings, and what each one changed", "Persona"]], ["Ideate", "The same process, plus a regulator", "Every epic ran through the same seven steps I use on Auxo Workshop, from user journey to handover. The difference was validation. A flow wasn't finished when the team liked it; it had to survive a review against NZTA regulation before anyone built it. I worked from the Auxo Design System from day one, so the app looks and behaves like the rest of the suite.", [], ["Design process"]], ["Design & prototype", "Designing for a tablet in a workshop", "I designed for the iPad first, for touch and legibility, and took the mid fidelity flow from login through inspection to the generated checksheet. This is where it ended up: every section on one screen, a coloured edge when a section is done, warnings and fails shown on the section they belong to, and totals at the top that the technician checks before submitting.", ["tablets:Technician: inspection home", "vid"], ["Initial design, mid fidelity"]], ["Test & validate", "The test that changed the app", "Testing the mid fidelity prototype, before development started, showed the first design was wrong. Inspectors had to scroll the checklist to find each section, which slowed them down and didn't match how they work. I redesigned the main page to show every section at a glance, and workshops can set their own section order. Catching it at prototype stage cost a few screens. The validated prototype then went to NZTA, who approved it.", ["Archive_WOF.png"], ["The iteration that changed the app", "Final prototype and validation"]], ["Deliver & measure", "From epics to the document NZTA needs", "I split the workflow into epics with user stories, acceptance criteria and UI specs, and grew the checklist component in four phases: pass and fail, failure reasons and position, photos on failed items, then photos everywhere. The output is what NZTA and the vehicle owner actually need: a checksheet where a fail and its re-inspection sit together, struck through rather than deleted. SmartCheck Pro is approved and in market. Workshops moved straight from paper checksheets to tablets, and their feedback is consistent: at least 10 minutes saved on every WOF, which turns 40 minutes into 30 and lifts an inspector from $120 to $160 an hour, and custom checksheets they describe as a game changer.", ["WOF_Faild_and_rechecked.png", "html"], ["Building the checklist in phases", "Breaking the flow down for development", "The document at the end of it"]], ["Since launch", "Checksheets workshops build themselves", "Phase two turned one regulated inspection into a tool workshops shape themselves. They build their own checksheets, like a 25 point check or a pre purchase inspection, while the WOF stays locked to the structure NZTA approved. Workshop owners called it a game changer, not for the builder but because results now sit against the vehicle instead of in long notes. I also added a walkaround for marking damage, and I'm researching QMS forms now.", ["checksheet-templates.png"], ["Customise checksheet", "The walkaround", "QMS forms, in research now", "What is next"]], ["Reflection", "What I’d do differently", "SmartCheck Pro worked, and NZTA approved it. Looking back, three things would have made it stronger.", [], [], ["<b>Test in the bay, not just in the office.</b> The final prototype was tested internally before it went to NZTA. I’d put it in front of inspectors in their own workshops first, the same way the section navigation problem was caught.", "<b>Measure the before.</b> The 10 minute saving comes from workshop feedback. I’d time a set of paper inspections before launch, so the saving is something we measured, not something we were told.", "<b>Bring accessibility forward.</b> Touch target and colour issues showed up once technicians were using the product. Checking them in mid fidelity, with gloves and bad light in mind, would have caught them earlier."]]], "auxo-workshop": [["Context", "Thirty years of software, rebuilt as one platform", "Auxo has built software for New Zealand's automotive industry for more than thirty years, across SAM, Orion, webSAM and Systime. Auxo Workshop rebuilds all of it as one platform for New Zealand and Australia. I've been the sole UX designer from concept to delivery, working with eight developers, and later took on Product Owner work too. webSAM gave us a head start: real customers, known pain points, and people to test with.", ["endorse"], ["Where it started", "What we already knew", "What the platform needed"]], ["Discover", "Software that recorded the day instead of reducing it", "A SWOT analysis of Shop Monkey, Mechanic Desk, Workshop Software and Black Purl showed where the gaps were. Talking to workshops showed the bigger problem: owners doing admin in the evenings and at weekends, because their software recorded the day instead of reducing it. That became the brief for every screen. If it adds a single step to someone's evening, it has failed.", [], ["Competitive analysis", "The challenges workshops actually face"]], ["Define", "Two generations on the same screen", "Two generations run these businesses. The older one, often a mechanic with a partner doing the admin, is used to pen and paper and wants it simple. The newer one is taking over the family business, lives on their phone and wants to modernise. The product has to work for both on the same screen, which ruled out anything that only makes sense to a power user.", [], ["Who we are designing for"]], ["Ideate", "Proving the concept to the board", "Three years of ideas had to become something the board could approve. With the Product Manager and General Manager I mapped the business user journey, ran the brainstorming that shaped a multi-year roadmap, and built low fidelity flows and a prototype. The board approved it and development began. From then on every epic followed seven steps: journey, competitor research, low and mid fidelity, prototype, testing, high fidelity, handover.", ["low-fi.png"], ["History: proving the concept", "Design process"]], ["Design & prototype", "The workboard and the job card", "The workboard reflects how a workshop thinks: vehicles moving through states, not a list of tasks, including Invoiced and Collected, the two states most software leaves out. The job card is where almost everything happens, so it carries a lot without feeling heavy. Behind both sits the Auxo Design System I built on Ant Design, with a UX guideline so eight developers can build consistently when I'm not in the room.", ["workboard-01-2048x1234.jpg"], ["What a workshop sees", "First problem: the job card", "Guidelines and components", "Making a booking", "Availability calendar", "Service templates"]], ["Test & validate", "Testing before high fidelity, and after launch", "User testing is step five of every epic, before high fidelity, with customers matched to our personas, and every feature goes through beta with real workshops before release. Testing didn't stop at launch. Customers told us the smart service templates were too dynamic for some teams, so phase two added fixed templates that do exactly what the workshop sets.", ["quote"], ["Testing with customers"]], ["Deliver & measure", "Live, measured, and played at events", "Auxo Workshop is live with 320+ workshop businesses in New Zealand and Australia, almost all of whom started on pen and paper. Over 90% now take bookings online, which means far fewer phone calls at the front desk, and automated reminders have replaced chasing customers by hand. The price matrix sets each part’s price from its cost, and the margin check flags any line that falls below the workshop’s target, so most workshops now reach the margin they set, and larger brand workshops have told us their revenue is up at least 20% since moving to Auxo Workshop. After release I use Clarity and Userpilot to see how features are really used. I also turned the prototype into a timed game: pick a real task, find your own way through it, beat the clock. It helps customers learn the product faster, and sales and marketing use it at events.", ["html", "game-timer-running.png"], ["Where it is now", "A game that teaches the product"]], ["Since launch", "Two years of features, one process", "Every feature since launch has run through the same process: multi-day jobs, fixed templates, parts and purchase orders, loan cars, additional contacts, automation, and now AI. Parts ordering is a good example. One job often needs parts from several suppliers, so the admin loads the job's parts once and the system raises a separate purchase order per supplier. For AI my rule is simple: AI drafts, the person decides.", ["aw-purchase-list.png"], ["Multi-day jobs", "Fixed templates, because customers asked", "Parts and inventory", "Loan car management", "Additional contacts", "Automation", "Designing AI into the workshop"]], ["Reflection", "What I’d do differently", "Auxo Workshop is the biggest thing I have designed, and the feedback has taught me as much as the research did.", [], [], ["<b>Design the first month, not just the product.</b> One owner told us they were ready to throw the computer out the window in their first month. Onboarding and data migration deserved the same design attention as the job card. The game came later and helped, but it should have been part of launch.", "<b>Test automation levels with more kinds of workshop.</b> Smart templates suited many teams but felt too dynamic for admin heavy and franchise workshops, which is why fixed templates followed. Testing with those workshops earlier would have shipped both options together.", "<b>Instrument from day one.</b> Clarity and Userpilot came in after release, so some early decisions have no baseline to compare against. I’d set up the key events before the first feature shipped."]]], "auxo-mobile": [["Context", "Getting technicians off paper job cards", "Technicians hold on to paper job cards right up until one gets lost, arrives unreadable, or turns into admin for someone else. Auxo Workshop Mobile puts the job on their phone instead: their jobs, the clock, parts, photos and notes. I was the sole UX designer, with part time contract support early on, from September 2024 until phase one launched on 4 December.", ["Auxo-Workshop-Mobile.jpg"], ["The idea"]], ["Discover", "Starting from what the last app got wrong", "I didn't start from a blank page. I had designed the WebSAM technician app two years earlier, so its known problems, search nobody could use and touch targets too small for a workshop, were on the list before research began. I reviewed clocking apps such as Connect Team and Clockify, and interviewed technicians and admins across three workshops.", [], ["Competitive analysis"]], ["Define", "One technician’s day", "I framed the app around one technician's day. John opens his jobs, picks a brake pad replacement, checks the vehicle's history, logs the pads from stock, flags a worn rotor for approval, and clocks his time throughout. When he marks it complete, the front desk knows straight away. Nothing on paper, no data entry later, and stock that stays accurate on its own.", [], ["A day in the app"]], ["Ideate", "Three workflows to get right first", "From that day I picked the three workflows that had to work before anything else: clocking on and off, documenting the job, and stocktake. I mapped them in low fidelity, then mid fidelity for testing, with the earlier app's problems as constraints from the start.", [], ["Design process"]], ["Design & prototype", "Built for gloves, noise and no signal", "A technician can only be on one job at a time, so clocking onto a new job closes the last one. Photos attach to the part of the job they belong to and can be annotated. Many workshops are steel sheds with poor signal, so every screen says what's unavailable offline instead of spinning. The app also reshaped the web product: timesheets, photos on the job card, and technician notes.", ["Awmobile2.png", "Awmobile14.png"], ["Three workflows to get right", "Designing for a workshop with no signal", "Notifications", "What it changed on the web side"]], ["Test & validate", "More than ten technicians, on their own phones", "More than ten technicians tested the prototype on their own phones, in their own workshops. Search and filter were redesigned because the first version was hard to use, and I cut date filtering rather than ship it half solved. Paused jobs got their own tab, every target got bigger for workshop hands, and parts search was added.", ["awmobile15.png"], ["What testing changed"]], ["Deliver & measure", "Launched, then reprioritised", "Phase one launched on 4 December on the App Store and Google Play. Today every technician at our customer workshops works from the app on a phone or tablet, so the paper job card is gone. Because technicians clock on and off each job, the workshop sees the hours a job really took, which makes its margin accurate and shows how much capacity is left to accept more work. And because vehicle history, parts and internal notes are on the phone, technicians stop losing time walking to the front desk to look them up. Testing also reordered the roadmap: continuous clocking, creating bookings and approving online bookings mattered more than what we had planned next, so they moved up.", [], ["Launch"]], ["Since launch", "Where a technician spends the day", "Since launch the app has become where a technician spends most of the day. Clocking is continuous with no gaps, admins create and approve bookings from the phone, SmartCheck Pro inspections sit inside the job, and stocktake runs on a scanner. The home screen tracks the day against an 8 hour goal, with a streak badge and a star held back until the technician clocks off, so the celebration never interrupts a job.", ["phones:Dashboard", "html"], ["Continuous time clocking", "Create a new booking", "Approving online bookings", "Inspections inside the job", "Stocktake", "What shipped next"]], ["Reflection", "What I’d do differently", "The technician app is used by every technician at our customer workshops. These are the things I’d change if I started it again.", [], [], ["<b>Test search first.</b> The first search and filter was hard to use, and date filtering was cut rather than shipped half solved. Search is how technicians find their work, so I’d prototype and test it before anything else.", "<b>Plan for the forgotten clock-off.</b> Technicians forgetting to clock off was predictable, but the fix came after launch. I’d design the missed clock-off flow into phase one.", "<b>Check priorities with technicians before committing the roadmap.</b> Testing reordered phase two around continuous clocking and bookings. A short prioritisation session at the start would have got there sooner."]]]};
+const STORIES = {"smartcheck": [["Context", "Turning a paper inspection into a legal digital one", "Every Warrant of Fitness in New Zealand was done on paper: slow, easy to get wrong, and hard to keep records from. Auxo wanted a standalone app that NZTA certified workshops could use from start to finish. I led the UX from research through to handover, with a part time contractor in phase one and on my own since. The whole project hung on one thing: NZTA approving it, so the inspection is legally complete inside the software.", ["ewof_1.png"], ["The problem", "The vision", "Scope, and who I worked with"]], ["Discover", "Watching technicians inspect real vehicles", "I spent time with NZTA certified technicians in their workshops, through interviews, observation and feedback sessions, to see how an inspection really runs and where paper hurts. They wanted checklists that mirror their paper flow, photos as evidence, predefined failure reasons, and a warning before they break a rule. The competitors I looked at were digital checklists that still ended in printing and re-keying. Direct NZTA integration became the difference.", [], ["Understanding the technicians", "Competitive analysis"]], ["Define", "What each finding changed", "Each finding became a design rule. Technicians carry a tablet in a noisy, badly lit workshop, so the app is tablet first with large targets. They start wherever the vehicle lets them, so there is no fixed order, but every mandatory check is still enforced. Bookings link to inspections so nothing is entered twice. Two personas carried this: Mark, the inspector, and Karen, the administrator who answers for the record in an audit.", ["eWOF - Persona.jpg (1 of 2)"], ["Research findings, and what each one changed", "Persona"]], ["Ideate", "The same process, plus a regulator", "Every epic ran through the same seven steps I use on Auxo Workshop, from user journey to handover. The difference was validation. A flow wasn't finished when the team liked it; it had to survive a review against NZTA regulation before anyone built it. I worked from the Auxo Design System from day one, so the app looks and behaves like the rest of the suite.", [], ["Design process"]], ["Design & prototype", "Designing for a tablet in a workshop", "I designed for the iPad first, for touch and legibility, and took the mid fidelity flow from login through inspection to the generated checksheet. This is where it ended up: every section on one screen, a coloured edge when a section is done, warnings and fails shown on the section they belong to, and totals at the top that the technician checks before submitting.", ["tablets:Technician: inspection home", "vid"], ["Initial design, mid fidelity"]], ["Test & validate", "The test that changed the app", "Testing the mid fidelity prototype, before development started, showed the first design was wrong. Inspectors had to scroll the checklist to find each section, which slowed them down and didn't match how they work. I redesigned the main page to show every section at a glance, and workshops can set their own section order. Catching it at prototype stage cost a few screens. The validated prototype then went to NZTA, who approved it.", ["Archive_WOF.png"], ["The iteration that changed the app", "Final prototype and validation"]], ["Deliver & measure", "From epics to the document NZTA needs", "I split the workflow into epics with user stories, acceptance criteria and UI specs, and grew the checklist component in four phases: pass and fail, failure reasons and position, photos on failed items, then photos everywhere. The output is what NZTA and the vehicle owner actually need: a checksheet where a fail and its re-inspection sit together, struck through rather than deleted. SmartCheck Pro is approved and in market. Workshops moved straight from paper checksheets to tablets, and their feedback is consistent: at least 10 minutes saved on every WOF, which turns 40 minutes into 30 and could lift an inspector from $120 to $160 an hour when bookings are full, and custom checksheets they describe as a game changer.", ["WOF_Faild_and_rechecked.png", "html"], ["Building the checklist in phases", "Breaking the flow down for development", "The document at the end of it"]], ["Since launch", "Checksheets workshops build themselves", "Phase two turned one regulated inspection into a tool workshops shape themselves. They build their own checksheets, like a 25 point check or a pre purchase inspection, while the WOF stays locked to the structure NZTA approved. Workshop owners called it a game changer, not for the builder but because results now sit against the vehicle instead of in long notes. I also added a walkaround for marking damage, and I'm researching QMS forms now.", ["checksheet-templates.png"], ["Customise checksheet", "The walkaround", "QMS forms, in research now", "What is next"]], ["Reflection", "What I’d do differently", "SmartCheck Pro worked, and NZTA approved it. Looking back, three things would have made it stronger.", [], [], ["<b>Test in the bay, not just in the office.</b> The final prototype was tested internally before it went to NZTA. I’d put it in front of inspectors in their own workshops first, the same way the section navigation problem was caught.", "<b>Measure the before.</b> The 10 minute saving comes from workshop feedback. I’d time a set of paper inspections before launch, so the saving is something we measured, not something we were told.", "<b>Bring accessibility forward.</b> Touch target and colour issues showed up once technicians were using the product. Checking them in mid fidelity, with gloves and bad light in mind, would have caught them earlier."]]], "auxo-workshop": [["Context", "Thirty years of software, rebuilt as one platform", "Auxo has built software for New Zealand's automotive industry for more than thirty years, across SAM, Orion, webSAM and Systime. Auxo Workshop rebuilds all of it as one platform for New Zealand and Australia. I've been the sole UX designer from concept to delivery, working with eight developers, and later took on Product Owner work too. webSAM gave us a head start: real customers, known pain points, and people to test with.", ["endorse"], ["Where it started", "What we already knew", "What the platform needed"]], ["Discover", "Software that recorded the day instead of reducing it", "A SWOT analysis of Shop Monkey, Mechanic Desk, Workshop Software and Black Purl showed where the gaps were. Talking to workshops showed the bigger problem: owners doing admin in the evenings and at weekends, because their software recorded the day instead of reducing it. That became the brief for every screen. If it adds a single step to someone's evening, it has failed.", [], ["Competitive analysis", "The challenges workshops actually face"]], ["Define", "Two generations on the same screen", "Two generations run these businesses. The older one, often a mechanic with a partner doing the admin, is used to pen and paper and wants it simple. The newer one is taking over the family business, lives on their phone and wants to modernise. The product has to work for both on the same screen, which ruled out anything that only makes sense to a power user.", [], ["Who we are designing for"]], ["Ideate", "Proving the concept to the board", "Three years of ideas had to become something the board could approve. With the Product Manager and General Manager I mapped the business user journey, ran the brainstorming that shaped a multi-year roadmap, and built low fidelity flows and a prototype. The board approved it and development began. From then on every epic followed seven steps: journey, competitor research, low and mid fidelity, prototype, testing, high fidelity, handover.", ["low-fi.png"], ["History: proving the concept", "Design process"]], ["Design & prototype", "The workboard and the job card", "The workboard reflects how a workshop thinks: vehicles moving through states, not a list of tasks, including Invoiced and Collected, the two states most software leaves out. The job card is where almost everything happens, so it carries a lot without feeling heavy. Behind both sits the Auxo Design System I built on Ant Design, with a UX guideline so eight developers can build consistently when I'm not in the room.", ["workboard-01-2048x1234.jpg"], ["What a workshop sees", "First problem: the job card", "Guidelines and components", "Making a booking", "Availability calendar", "Service templates"]], ["Test & validate", "Testing before high fidelity, and after launch", "User testing is step five of every epic, before high fidelity, with customers matched to our personas, and every feature goes through beta with real workshops before release. Testing didn't stop at launch. Customers told us the smart service templates were too dynamic for some teams, so phase two added fixed templates that do exactly what the workshop sets.", ["quote"], ["Testing with customers"]], ["Deliver & measure", "Live, measured, and played at events", "Auxo Workshop is live with 320+ workshop businesses in New Zealand and Australia, almost all of whom started on pen and paper. Over 90% now take bookings online, which means far fewer phone calls at the front desk, and automated reminders have replaced chasing customers by hand. The price matrix sets each part’s price from its cost, and the margin check flags any line that falls below the workshop’s target, so most workshops now reach the margin they set, and larger brand workshops have told us their revenue is up at least 20% since moving to Auxo Workshop. After release I use Clarity and Userpilot to see how features are really used. I also turned the prototype into a timed game: pick a real task, find your own way through it, beat the clock. It helps customers learn the product faster, and sales and marketing use it at events.", ["html", "game-timer-running.png"], ["Where it is now", "A game that teaches the product"]], ["Since launch", "Two years of features, one process", "Every feature since launch has run through the same process: multi-day jobs, fixed templates, parts and purchase orders, loan cars, additional contacts, automation, and now AI. Parts ordering is a good example. One job often needs parts from several suppliers, so the admin loads the job's parts once and the system raises a separate purchase order per supplier. For AI my rule is simple: AI drafts, the person decides. Since taking on Product Owner work, I also write the user stories and help prioritise the backlog for these features.", ["aw-purchase-list.png"], ["Multi-day jobs", "Fixed templates, because customers asked", "Parts and inventory", "Loan car management", "Additional contacts", "Automation", "Designing AI into the workshop"]], ["Reflection", "What I’d do differently", "Auxo Workshop is the biggest thing I have designed, and the feedback has taught me as much as the research did.", [], [], ["<b>Design the first month, not just the product.</b> One owner told us they were ready to throw the computer out the window in their first month. Onboarding and data migration deserved the same design attention as the job card. The game came later and helped, but it should have been part of launch.", "<b>Test automation levels with more kinds of workshop.</b> Smart templates suited many teams but felt too dynamic for admin heavy and franchise workshops, which is why fixed templates followed. Testing with those workshops earlier would have shipped both options together.", "<b>Instrument from day one.</b> Clarity and Userpilot came in after release, so some early decisions have no baseline to compare against. I’d set up the key events before the first feature shipped."]]], "auxo-mobile": [["Context", "Getting technicians off paper job cards", "Technicians hold on to paper job cards right up until one gets lost, arrives unreadable, or turns into admin for someone else. Auxo Workshop Mobile puts the job on their phone instead: their jobs, the clock, parts, photos and notes. I was the sole UX designer, with part time contract support early on, from September 2024 until phase one launched on 4 December.", ["Auxo-Workshop-Mobile.jpg"], ["The idea"]], ["Discover", "Starting from what the last app got wrong", "I didn't start from a blank page. I had designed the WebSAM technician app two years earlier, so its known problems, search nobody could use and touch targets too small for a workshop, were on the list before research began. I reviewed clocking apps such as Connect Team and Clockify, and interviewed technicians and admins across three workshops.", [], ["Competitive analysis"]], ["Define", "One technician’s day", "I framed the app around one technician's day. John opens his jobs, picks a brake pad replacement, checks the vehicle's history, logs the pads from stock, flags a worn rotor for approval, and clocks his time throughout. When he marks it complete, the front desk knows straight away. Nothing on paper, no data entry later, and stock that stays accurate on its own.", [], ["A day in the app"]], ["Ideate", "Three workflows to get right first", "From that day I picked the three workflows that had to work before anything else: clocking on and off, documenting the job, and stocktake. I mapped them in low fidelity, then mid fidelity for testing, with the earlier app's problems as constraints from the start.", [], ["Design process"]], ["Design & prototype", "Built for gloves, noise and no signal", "A technician can only be on one job at a time, so clocking onto a new job closes the last one. Photos attach to the part of the job they belong to and can be annotated. Many workshops are steel sheds with poor signal, so every screen says what's unavailable offline instead of spinning. The app also reshaped the web product: timesheets, photos on the job card, and technician notes.", ["Awmobile2.png", "Awmobile14.png"], ["Three workflows to get right", "Designing for a workshop with no signal", "Notifications", "What it changed on the web side"]], ["Test & validate", "More than ten technicians, on their own phones", "More than ten technicians tested the prototype on their own phones, in their own workshops. Search and filter were redesigned because the first version was hard to use, and I cut date filtering rather than ship it half solved. Paused jobs got their own tab, every target got bigger for workshop hands, and parts search was added.", ["awmobile15.png"], ["What testing changed"]], ["Deliver & measure", "Launched, then reprioritised", "Phase one launched on 4 December on the App Store and Google Play. Today every technician at our customer workshops works from the app on a phone or tablet, so the paper job card is gone. Because technicians clock on and off each job, the workshop sees the hours a job really took, which makes its margin accurate and shows how much capacity is left to accept more work. And because vehicle history, parts and internal notes are on the phone, technicians stop losing time walking to the front desk to look them up. Testing also reordered the roadmap: continuous clocking, creating bookings and approving online bookings mattered more than what we had planned next, so they moved up.", [], ["Launch"]], ["Since launch", "Where a technician spends the day", "Since launch the app has become where a technician spends most of the day. Clocking is continuous with no gaps, admins create and approve bookings from the phone, SmartCheck Pro inspections sit inside the job, and stocktake runs on a scanner. The home screen tracks the day against an 8 hour goal, with a streak badge and a star held back until the technician clocks off, so the celebration never interrupts a job.", ["phones:Dashboard", "html"], ["Continuous time clocking", "Create a new booking", "Approving online bookings", "Inspections inside the job", "Stocktake", "What shipped next"]], ["Reflection", "What I’d do differently", "The technician app is used by every technician at our customer workshops. These are the things I’d change if I started it again.", [], [], ["<b>Test search first.</b> The first search and filter was hard to use, and date filtering was cut rather than shipped half solved. Search is how technicians find their work, so I’d prototype and test it before anything else.", "<b>Plan for the forgotten clock-off.</b> Technicians forgetting to clock off was predictable, but the fix came after launch. I’d design the missed clock-off flow into phase one.", "<b>Check priorities with technicians before committing the roadmap.</b> Testing reordered phase two around continuous clocking and bookings. A short prioritisation session at the start would have got there sooner."]]]};
 
 
 /* A case study with a story reads as one short stage at a time. Each stage
@@ -3921,9 +3928,9 @@ function pageCV(){
 
           <div class="sec-head rv"><h2>Highlights</h2><span class="mono">From the last four years</span></div>
           <div class="cv-hl">
+            <a class="cv-hl-card" href="#/case/auxo-workshop" style="--ca:#00756A"><span class="mono">Auxo Workshop</span><b>Sole designer behind the platform 320+ businesses run their day on</b><i aria-hidden="true">&#8594;</i></a>
             <a class="cv-hl-card" href="#/case/smartcheck" style="--ca:#1565C0"><span class="mono">SmartCheck Pro</span><b>Won NZTA approval to replace paper Warrant of Fitness inspections</b><i aria-hidden="true">&#8594;</i></a>
             <a class="cv-hl-card" href="#/case/auxo-mobile" style="--ca:#4237D6"><span class="mono">Technician app</span><b>Designed and released on iOS and Android, now used by every Auxo Workshop customer</b><i aria-hidden="true">&#8594;</i></a>
-            <a class="cv-hl-card" href="#/case/auxo-workshop" style="--ca:#00756A"><span class="mono">Auxo Workshop</span><b>Sole designer behind the platform 320+ businesses run their day on</b><i aria-hidden="true">&#8594;</i></a>
             <a class="cv-hl-card" href="#/system" style="--ca:#5348E8"><span class="mono">Auxo Design System</span><b>Built and maintain the system eight developers build from</b><i aria-hidden="true">&#8594;</i></a>
           </div>
 
