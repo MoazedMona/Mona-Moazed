@@ -3675,7 +3675,7 @@ function pageHome(){
           </div>
         </div>
         <figure class="portrait-hero">
-          <img src="${A.portrait}" alt="Mona Moazed" width="680" height="850">
+          <img src="${A.portrait}" alt="Mona Moazed" width="680" height="850" fetchpriority="high" decoding="async">
         </figure>
       </div>
       <p class="now"><b>Right now</b> I'm the only UX designer at Auxo Software, where I look after Auxo Workshop and SmartCheck Pro, and I've recently started picking up Product Owner work as well. <span class="status" style="margin-left:6px"><i></i> Open to Product Designer roles</span></p>
@@ -3733,9 +3733,9 @@ function pageHome(){
               <span class="clip-scan"></span>
             </div>
           </div>
-          <div class="cine-lap" data-k="lap"><div class="lap-screen"><img src="${A.cineLaptop}" alt=""></div><span class="lap-base"></span></div>
-          <div class="cine-tab" data-k="tab"><div class="tab-screen"><img src="${A.cineTablet}" alt=""></div></div>
-          <div class="cine-ph" data-k="ph"><div class="ph-screen"><img src="${A.cinePhone}" alt=""></div></div>
+          <div class="cine-lap" data-k="lap"><div class="lap-screen"><img src="${A.cineLaptop}" alt="" loading="lazy" decoding="async"></div><span class="lap-base"></span></div>
+          <div class="cine-tab" data-k="tab"><div class="tab-screen"><img src="${A.cineTablet}" alt="" loading="lazy" decoding="async"></div></div>
+          <div class="cine-ph" data-k="ph"><div class="ph-screen"><img src="${A.cinePhone}" alt="" loading="lazy" decoding="async"></div></div>
           <span class="cine-chip" data-in=".27" data-out=".5" style="--x:-4%;--y:6%">NZTA approved</span>
           <span class="cine-chip" data-in=".31" data-out=".5" style="--x:70%;--y:16%"><b>150+</b> customers</span>
           <span class="cine-chip" data-in=".35" data-out=".5" style="--x:58%;--y:84%"><b>70+</b> checksheets a day</span>
@@ -4058,7 +4058,7 @@ function pageCV(){
         </div>
       </div>
       <figure class="cv-photo">
-        <img src="${A.portrait}" alt="Mona Moazed" width="680" height="850">
+        <img src="${A.portrait}" alt="Mona Moazed" width="680" height="850" fetchpriority="high" decoding="async">
         <figcaption><span class="status"><i></i> Open to Product Designer roles</span><span class="cv-where">Albany, Auckland</span></figcaption>
       </figure>
     </div>
