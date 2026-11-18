@@ -175,6 +175,7 @@ a{color:inherit}
 .brand-role em{font-style:normal;color:var(--cobalt-dim)}
 .brand-role .long{display:inline}
 @media (max-width:1040px){ .brand-role .long{display:none} }
+@media (max-width:920px){ .brand-role .mid{display:none} }
 @media (max-width:520px){
   .brand-role .mid{display:none}
   .brand-role{font-size:.7rem;letter-spacing:.1em}
@@ -258,6 +259,12 @@ a{color:inherit}
 @media (max-width:939px){
   .portrait-hero{max-width:min(240px,52vw)}
 }
+@media (max-width:620px){
+  .hero-grid{gap:20px}
+  .portrait-hero{order:-1;max-width:112px}
+  .cta-row{gap:8px}
+  .cta-row .btn-a,.cta-row .btn-b{padding:0 16px;font-size:.9rem}
+}
 .portrait-hero .shot-frame{aspect-ratio:4/5;border-radius:var(--radius);border-style:solid;border-color:var(--hair)}
 .portrait-hero img{
   width:100%;height:auto;display:block;
@@ -338,11 +345,12 @@ a{color:inherit}
 /* ============================================================
    WORK INDEX: rows read like lines on a workshop docket
    ============================================================ */
-.index{border-top:1px solid var(--hair)}
+.index{border-top:0}
 .job{
   display:grid;
-  grid-template-columns:34px 128px minmax(0,1fr) auto 30px;
-  gap:20px;align-items:center;
+  grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) 30px;
+  grid-template-areas:"thumb text arrow" "thumb chip arrow";
+  column-gap:28px;row-gap:14px;align-items:center;
   padding:18px 16px;border-radius:var(--radius);
   border-bottom:1px solid var(--hair);
   text-decoration:none;position:relative;isolation:isolate;
@@ -358,11 +366,12 @@ a{color:inherit}
 }
 .job:focus-visible{box-shadow:0 0 0 2px var(--cobalt),0 14px 34px rgba(14,27,51,.10)}
 
-.job-no{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--steel)}
+.job-no{grid-area:no;align-self:start;padding-top:6px;font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;color:var(--steel)}
 .job:hover .job-no{color:var(--cobalt)}
 
 /* the preview: what is this thing, at a glance */
 .job-thumb{
+  grid-area:thumb;
   display:block;aspect-ratio:16/10;border-radius:var(--radius-sm);
   overflow:hidden;background:var(--card);
   border:1px solid var(--hair);
@@ -386,7 +395,7 @@ a{color:inherit}
   text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.35);
 }
 
-.job-text{display:block;min-width:0}
+.job-text{grid-area:text;align-self:end;display:block;min-width:0}
 .job-claim{
   display:block;font-family:var(--display);font-weight:700;
   line-height:1.2;letter-spacing:-.022em;
@@ -399,24 +408,22 @@ a{color:inherit}
   font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
 }
 .job-sum{display:block;margin-top:9px;color:var(--steel);font-size:.92rem;line-height:1.45}
-.job-chip{justify-self:start}
-.job-arrow{font-family:var(--mono);text-align:right;color:var(--steel);transition:transform .22s ease,color .22s ease}
+.job-chip{grid-area:chip;align-self:start;justify-self:start}
+.job-arrow{grid-area:arrow;font-family:var(--mono);text-align:right;color:var(--steel);transition:transform .22s ease,color .22s ease}
 .job:hover .job-arrow,.job:focus-visible .job-arrow{color:var(--cobalt);transform:translateX(5px)}
 
 @media (max-width:1080px){
-  .job{grid-template-columns:110px minmax(0,1fr) 28px;gap:16px;align-items:start;padding:18px 12px}
+  .job{grid-template-columns:minmax(0,1fr) minmax(0,1fr) 28px;grid-template-areas:"thumb text arrow" "thumb chip arrow";column-gap:22px;padding:18px 12px}
   .job-no{display:none}
-  .job-chip{grid-column:2;margin-top:12px}
   .job-arrow{align-self:center}
 }
 @media (max-width:620px){
-  .job{grid-template-columns:94px minmax(0,1fr);gap:14px;padding:16px 10px}
-  .job-thumb{aspect-ratio:1/1}
+  .job{grid-template-columns:minmax(0,1fr);grid-template-areas:"thumb" "text" "chip";row-gap:12px;padding:16px 4px}
+  .job-thumb{aspect-ratio:16/10}
   .job-tile{align-items:center;padding:8px 9px}
   .job-tile i{font-size:.58rem;letter-spacing:.07em;line-height:1.35;word-break:normal;overflow-wrap:break-word}
   .job-arrow{display:none}
-  .job-sum{display:none}
-  .job-chip{grid-column:1/-1;margin-top:10px}
+  .job-chip{margin-top:0}
 }
 .chip{
   display:inline-block;
@@ -653,13 +660,45 @@ a{color:inherit}
 }
 
 /* stat row, drawn from real research counts */
-.stats{display:flex;flex-wrap:wrap;gap:1px;background:var(--hair);border:1px solid var(--hair);margin:30px 0}
-.stat{background:var(--card);padding:18px 22px;flex:1 1 130px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:30px 0}
+.stats.rv,.stats.rv.in{opacity:1;transform:none}
+.stat{
+  --sc:var(--ca,var(--cobalt));
+  position:relative;overflow:hidden;isolation:isolate;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--sc) 9%,var(--card)),var(--card) 62%);
+  border:1px solid color-mix(in srgb,var(--sc) 18%,var(--hair));
+  border-radius:var(--radius-sm,10px);padding:20px 20px 18px;
+  opacity:0;transform:translateY(18px) scale(.98);
+  transition:opacity .6s ease calc(var(--i,0)*110ms),transform .7s cubic-bezier(.2,.8,.2,1) calc(var(--i,0)*110ms),box-shadow .25s ease,border-color .25s ease;
+}
+/* accent bar that draws in from the left */
+.stat::before{
+  content:'';position:absolute;left:0;top:0;height:3px;width:100%;
+  background:linear-gradient(90deg,var(--sc),color-mix(in srgb,var(--sc) 35%,#00BBA5));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform .9s cubic-bezier(.2,.8,.2,1) calc(var(--i,0)*110ms + .25s);
+}
+/* soft light that follows the hover */
+.stat::after{
+  content:'';position:absolute;inset:-40%;z-index:-1;opacity:0;
+  background:radial-gradient(closest-side,color-mix(in srgb,var(--sc) 16%,transparent),transparent);
+  transform:translate(30%,30%);transition:opacity .35s ease,transform .6s ease;
+}
+.stats.in .stat{opacity:1;transform:none}
+.stats.in .stat::before{transform:scaleX(1)}
+.stats.in .stat:hover{transform:translateY(-4px);box-shadow:0 14px 30px color-mix(in srgb,var(--sc) 16%,transparent);border-color:color-mix(in srgb,var(--sc) 40%,var(--hair))}
+.stats.in .stat:hover::after{opacity:1;transform:translate(10%,10%)}
 .stat b{
   display:block;font-family:var(--display);font-weight:800;font-feature-settings:'tnum' 1;
-  font-size:clamp(1.7rem,4.6vw,2.5rem);line-height:1;letter-spacing:-.02em;
+  font-size:clamp(1.55rem,3.4vw,2.25rem);line-height:1.05;letter-spacing:-.02em;white-space:nowrap;
+  background:linear-gradient(120deg,var(--ink) 30%,color-mix(in srgb,var(--sc) 85%,var(--ink)));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
 }
-.stat span{display:block;margin-top:8px;color:var(--steel);font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;text-transform:uppercase}
+.stat span{display:block;margin-top:10px;color:var(--steel);font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;line-height:1.55;text-transform:uppercase}
+@media (prefers-reduced-motion:reduce){
+  .stat,.stat::before{transition:none;opacity:1;transform:none}
+  .stat:hover{transform:none}
+}
 
 /* Methods, split into research and design. Borrowed from Mona's own project
    summary slide, which groups them exactly this way. Tools are not repeated
@@ -934,6 +973,10 @@ a{color:inherit}
   border:1px solid var(--hair);border-top:3px solid var(--ca);border-radius:var(--radius);text-decoration:none;
   transition:transform .22s ease,box-shadow .22s ease}
 .arc:hover,.arc:focus-visible{transform:translateY(-3px);box-shadow:0 14px 30px rgba(14,27,51,.10)}
+.arc{overflow:hidden}
+.arc-thumb{display:block;aspect-ratio:16/6;margin:-20px -20px 4px;overflow:hidden;border-bottom:1px solid var(--hair)}
+.arc-thumb img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.01);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.arc:hover .arc-thumb img{transform:scale(1.06)}
 .arc-top{display:flex;justify-content:space-between;gap:10px;color:var(--steel)}
 .arc-top .mono{font-size:.66rem}
 .arc-name{font-family:var(--display);font-weight:700;font-size:1.14rem;letter-spacing:-.016em}
@@ -1014,11 +1057,26 @@ a{color:inherit}
 .cv-where{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-2)}
 @media (max-width:859px){.cv-photo{max-width:200px;order:-1}.cv-photo img{transform:none}}
 .cv-stats-band{margin-top:clamp(-70px,-7vw,-56px);position:relative;z-index:2}
-.cv-stats{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--hair);border:1px solid var(--hair);border-radius:var(--radius);overflow:hidden;box-shadow:0 20px 50px rgba(14,27,51,.12)}
+.cv-stats{margin:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 @media (min-width:860px){.cv-stats{grid-template-columns:repeat(4,minmax(0,1fr))}}
-.cv-stats>div{background:var(--card);padding:clamp(16px,2.4vw,24px)}
-.cv-stats dt{font-family:var(--display);font-weight:800;font-size:clamp(1.8rem,4.4vw,2.6rem);line-height:1;letter-spacing:-.03em;color:var(--ink)}
-.cv-stats>div:nth-child(1) dt{color:var(--cobalt)}.cv-stats>div:nth-child(2) dt{color:var(--teal-deep)}
+.cv-stats>div{
+  --sc:var(--cobalt);position:relative;overflow:hidden;isolation:isolate;
+  background:linear-gradient(160deg,color-mix(in srgb,var(--sc) 9%,var(--card)),var(--card) 62%);
+  border:1px solid color-mix(in srgb,var(--sc) 18%,var(--hair));border-radius:var(--radius-sm,10px);
+  box-shadow:0 10px 28px rgba(14,27,51,.08);padding:clamp(16px,2.4vw,24px);
+  opacity:0;transform:translateY(18px) scale(.98);
+  transition:opacity .6s ease calc(var(--i,0)*110ms),transform .7s cubic-bezier(.2,.8,.2,1) calc(var(--i,0)*110ms),box-shadow .25s ease,border-color .25s ease;
+}
+.cv-stats>div:nth-child(2){--i:1;--sc:var(--teal-deep,#00756A)}.cv-stats>div:nth-child(3){--i:2;--sc:#4237D6}.cv-stats>div:nth-child(4){--i:3;--sc:#1565C0}
+.cv-stats>div::before{content:'';position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--sc),color-mix(in srgb,var(--sc) 35%,#00BBA5));transform:scaleX(0);transform-origin:left;transition:transform .9s cubic-bezier(.2,.8,.2,1) calc(var(--i,0)*110ms + .25s)}
+.cv-stats>div::after{content:'';position:absolute;inset:-40%;z-index:-1;opacity:0;background:radial-gradient(closest-side,color-mix(in srgb,var(--sc) 16%,transparent),transparent);transform:translate(30%,30%);transition:opacity .35s ease,transform .6s ease}
+.cv-stats.in>div{opacity:1;transform:none}
+.cv-stats.in>div::before{transform:scaleX(1)}
+.cv-stats.in>div:hover{transform:translateY(-4px);box-shadow:0 14px 30px color-mix(in srgb,var(--sc) 18%,transparent);border-color:color-mix(in srgb,var(--sc) 40%,var(--hair))}
+.cv-stats.in>div:hover::after{opacity:1;transform:translate(10%,10%)}
+@media (prefers-reduced-motion:reduce){.cv-stats>div,.cv-stats>div::before{transition:none;opacity:1;transform:none}}
+.cv-stats dt{font-family:var(--display);font-weight:800;font-feature-settings:'tnum' 1;font-size:clamp(1.8rem,4.4vw,2.6rem);line-height:1.05;letter-spacing:-.03em;white-space:nowrap;background:linear-gradient(120deg,var(--ink) 30%,color-mix(in srgb,var(--sc) 85%,var(--ink)));-webkit-background-clip:text;background-clip:text;color:transparent}
+
 .cv-stats dd{margin:8px 0 0;color:var(--steel);font-size:.88rem;line-height:1.4}
 .cv-layout{display:grid;gap:clamp(36px,5vw,64px);grid-template-columns:minmax(0,1fr)}
 @media (min-width:1000px){.cv-layout{grid-template-columns:minmax(0,1fr) 320px;align-items:start}.cv-aside{position:sticky;top:90px}}
@@ -1202,7 +1260,7 @@ a{color:inherit}
    so it stays on the compositor. Static list under reduced
    motion, because a scroll hijack is a real accessibility cost.
    ============================================================ */
-.reel{position:relative;height:380vh;background:var(--ink)}
+.reel{position:relative;height:220vh;background:var(--ink)}
 .reel-track{position:sticky;top:0;height:100vh;overflow:hidden}
 .reel-stage{
   position:absolute;inset:0;
@@ -1724,6 +1782,82 @@ a{color:inherit}
   .spec dd,.case-hd .lede{color:#000}
   .role{page-break-inside:avoid}
 }
+/* ============ cinematic story: clipboard to screen ============ */
+.cine{position:relative;background:#070D1C;color:#E8ECF6}
+.cine-pin{position:relative;min-height:min(100svh,880px);padding:clamp(56px,8vh,96px) 0 clamp(36px,5vh,56px);overflow:hidden;display:flex;flex-direction:column;justify-content:center}
+.cine-bg{position:absolute;inset:0;pointer-events:none}
+.cine-bg i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;will-change:transform}
+.cine-bg .b1{width:46vw;height:46vw;left:-10vw;top:-12vw;background:#1B2D6B}
+.cine-bg .b2{width:38vw;height:38vw;right:-8vw;top:10vh;background:#0C4F4A}
+.cine-bg .b3{width:34vw;height:34vw;left:30vw;bottom:-18vw;background:#3A2F9E;opacity:.4}
+.cine-grid{position:absolute;inset:-20%;background-image:linear-gradient(rgba(169,162,251,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(169,162,251,.06) 1px,transparent 1px);background-size:56px 56px;mask-image:radial-gradient(70% 60% at 60% 50%,#000,transparent);will-change:transform}
+.cine-grain{position:absolute;inset:0;opacity:.07;mix-blend-mode:overlay;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+.cine-wrap{position:relative;z-index:1;width:min(1240px,92vw);margin:0 auto;display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(24px,4vw,64px);align-items:center}
+.cine-copy{position:relative;min-height:380px}
+.cine-cap{position:absolute;inset:0 0 auto 0;opacity:0;transform:translateY(26px);filter:blur(6px);transition:opacity .6s ease,transform .7s cubic-bezier(.2,.8,.2,1),filter .6s ease;pointer-events:none}
+.cine-cap.on{opacity:1;transform:none;filter:none;pointer-events:auto}
+.cine-cap .mono{color:#7FE3D6;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase}
+.cine-cap h3{font-family:var(--display);font-weight:800;font-size:clamp(2rem,4.4vw,3.6rem);line-height:1.02;letter-spacing:-.03em;margin:14px 0 18px;color:#fff}
+.cine-cap h3 em{font-style:normal;background:linear-gradient(100deg,#A9A2FB,#00BBA5);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cine-cap p{color:#AEB7CC;font-size:1.05rem;line-height:1.6;max-width:42ch}
+.cine-cta{display:flex;flex-wrap:nowrap;gap:8px;margin-top:26px}
+.cine-cta .btn-a,.cine-cta .btn-b{min-height:42px;padding:0 16px;font-size:.88rem;white-space:nowrap}
+.cine-cta .btn-a{background:linear-gradient(100deg,#5348E8,#00A493);color:#fff}
+.cine-cta .btn-b{color:#E8ECF6;border-color:rgba(232,236,246,.25)}
+.cine-stage{position:relative;aspect-ratio:16/11;width:100%}
+.cine-stage>[data-k]{position:absolute;left:50%;top:50%;will-change:transform,opacity}
+/* clipboard */
+.cine-clip{width:42%;aspect-ratio:3/4;border-radius:14px;background:linear-gradient(160deg,#B07A45,#7A4E26);box-shadow:0 40px 80px rgba(0,0,0,.5),inset 0 0 0 1px rgba(255,255,255,.08);padding:9% 7% 7%}
+.clip-top{position:absolute;left:50%;top:-4%;width:40%;height:11%;transform:translateX(-50%);border-radius:8px 8px 4px 4px;background:linear-gradient(180deg,#E3E7EE,#9AA3B2);box-shadow:0 4px 10px rgba(0,0,0,.35)}
+.clip-paper{position:relative;height:100%;background:#F7F5EE;border-radius:4px;padding:10% 8%;box-shadow:0 2px 0 rgba(0,0,0,.08);overflow:hidden}
+.clip-paper b{display:block;font-family:var(--mono);font-size:clamp(.5rem,.8vw,.7rem);letter-spacing:.06em;color:#3B3B3B;margin-bottom:10%}
+.clip-lines{width:100%}
+.clip-lines .rows line{stroke:#C9C4B4;stroke-width:2}
+.clip-lines .boxes rect{fill:none;stroke:#555;stroke-width:2;rx:3}
+.clip-lines .ticks path{fill:none;stroke:#1E4FD8;stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:40;stroke-dashoffset:40}
+.clip-lines .ticks path.x{stroke:#D6342C}
+.clip-scan{position:absolute;left:-10%;right:-10%;height:18%;top:-20%;background:linear-gradient(180deg,transparent,rgba(0,187,165,.55),transparent);mix-blend-mode:multiply;opacity:0}
+/* devices */
+.cine-lap{width:80%}
+.lap-screen{border-radius:12px 12px 4px 4px;background:#0B0D12;padding:1.6% 1.6% 2.4%;box-shadow:0 50px 100px rgba(0,0,0,.55),inset 0 0 0 1px rgba(255,255,255,.08)}
+.lap-screen img{display:block;width:100%;aspect-ratio:1356/847;object-fit:cover;border-radius:4px}
+.lap-base{display:block;height:9px;margin:0 -6%;border-radius:0 0 14px 14px;background:linear-gradient(180deg,#C7CCD6,#8D94A3)}
+.cine-tab{width:52%;border-radius:22px;background:#111318;padding:clamp(7px,1.1vw,13px);box-shadow:0 0 0 2px #7D8594,0 50px 100px rgba(0,0,0,.6)}
+.tab-screen img{display:block;width:100%;aspect-ratio:1270/880;object-fit:cover;border-radius:10px}
+.cine-ph{width:17%;border-radius:clamp(12px,1.5vw,18px);background:#111318;padding:clamp(4px,.55vw,7px);box-shadow:0 0 0 2px #7D8594,0 40px 80px rgba(0,0,0,.6)}
+.ph-screen img{display:block;width:100%;aspect-ratio:458/1030;object-fit:cover;border-radius:clamp(9px,1.1vw,14px)}
+/* floating proof chips */
+.cine-chip{position:absolute;left:var(--x);top:var(--y);z-index:5;font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;color:#E8ECF6;padding:9px 13px;border-radius:999px;background:rgba(20,28,52,.66);border:1px solid rgba(169,162,251,.35);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 10px 30px rgba(0,0,0,.35);opacity:0;transform:translateY(14px) scale(.92);transition:opacity .45s ease,transform .55s cubic-bezier(.2,.8,.2,1)}
+.cine-chip b{color:#7FE3D6;font-weight:600}
+.cine-chip.on{opacity:1;transform:none}
+/* story timer: one bar per scene, fills while it plays */
+.cine-rail{position:relative;z-index:2;display:flex;align-items:flex-start;gap:16px;width:min(1240px,92vw);margin:clamp(32px,6vh,64px) auto 0}
+.cine-rail ol{flex:1;display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:0;padding:0;list-style:none}
+.cine-rail ol button{all:unset;cursor:pointer;display:block;width:100%}
+.cine-rail i{display:block;height:3px;border-radius:3px;background:rgba(232,236,246,.14);overflow:hidden}
+.cine-rail i b{display:block;height:100%;width:100%;transform-origin:left;transform:scaleX(var(--f,0));background:linear-gradient(90deg,#5348E8,#00BBA5)}
+.cine-rail ol span{display:block;margin-top:10px;font-family:var(--mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:#5E6883;transition:color .3s ease}
+.cine-rail li.on span{color:#E8ECF6}
+.cine-rail ol button:hover span,.cine-rail ol button:focus-visible span{color:#A9A2FB}
+.cine-rail ol button:focus-visible i{outline:2px solid #A9A2FB;outline-offset:4px}
+.cine-play{all:unset;cursor:pointer;flex:none;width:34px;height:34px;margin-top:-16px;border-radius:50%;border:1px solid rgba(232,236,246,.25);display:grid;place-items:center;transition:border-color .2s ease,background .2s ease}
+.cine-play:hover,.cine-play:focus-visible{border-color:#A9A2FB;background:rgba(169,162,251,.12)}
+.cine-play .ic{width:10px;height:12px;border-left:3px solid #E8ECF6;border-right:3px solid #E8ECF6}
+.cine-play.paused .ic{width:0;height:0;border:0;border-left:11px solid #E8ECF6;border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+@media (max-width:860px){
+  .cine-wrap{grid-template-columns:1fr;gap:6px}
+  .cine-copy{min-height:210px}
+  .cine-cap h3{font-size:clamp(1.6rem,7vw,2.2rem);margin:8px 0 10px}
+  .cine-cap p{font-size:.92rem}
+  .cine-cta .btn-b{display:none}
+  .cine-chip{font-size:.6rem;padding:6px 9px}
+  .cine-rail ol{gap:6px}
+  .cine-rail ol span{font-size:.5rem;letter-spacing:.04em}
+  .cine-copy{min-height:250px}
+}
+@media (prefers-reduced-motion:reduce){
+  .cine-cap,.cine-chip{transition:none}
+}
 </style>
 </head>
 <body>
@@ -1734,7 +1868,7 @@ a{color:inherit}
   <div class="topbar-in">
     <a class="brand" href="#/">
       <span class="brand-top"><span class="brand-name">Mona Moazed</span><span class="brand-dot" aria-hidden="true"></span></span>
-      <span class="brand-role"><em>Product Designer</em><span class="mid"> &middot; Product Owner</span><span class="long"> &middot; Auckland, NZ</span></span>
+      <span class="brand-role"><em>Product Designer</em><span class="mid"> &middot; moving into Product Owner</span><span class="long"> &middot; Auckland, NZ</span></span>
     </a>
     <button class="burger" id="burger" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="nav" id="nav" aria-label="Main">
@@ -1776,8 +1910,8 @@ a{color:inherit}
     <h1 class="dsp" style="font-size:clamp(1.9rem,6vw,3.2rem)">Mona Moazed</h1>
     <p style="max-width:56ch;margin-top:20px">Product Designer in Auckland, New Zealand, moving into Product Owner. I design workshop and vehicle inspection software for the automotive industry, including Auxo Workshop, used by more than 320 businesses, and SmartCheck Pro (e-WOF), a digital Warrant of Fitness app approved by NZTA.</p>
     <h2 style="margin-top:36px;font-size:1.3rem">Case studies</h2>
-    <p style="max-width:62ch"><b>Auxo Workshop.</b> Sole UX designer, working with eight developers, on the platform that rebuilds thirty years of Auxo software into one product. Live with 320+ workshop businesses in New Zealand and Australia. Over 90% take bookings online, and the price matrix and margin check help most workshops reach the margin they set.</p>
-    <p style="max-width:62ch"><b>SmartCheck Pro (e-WOF).</b> A mobile responsive web app that takes Warrant of Fitness inspections from paper to tablet. I led the UX from research to handover, and NZTA approved it. Workshops tell us it saves at least 10 minutes on every WOF.</p>
+    <p style="max-width:62ch"><b>Auxo Workshop.</b> Sole UX designer, working with eight developers, on the platform that rebuilds thirty years of Auxo software into one product. Live with 320+ workshop businesses in New Zealand and Australia. Over 90% take bookings online, and the price matrix and margin check help most workshops reach the overall margin the owner sets.</p>
+    <p style="max-width:62ch"><b>SmartCheck Pro (e-WOF).</b> A mobile responsive web app that takes Warrant of Fitness inspections from paper to tablet. I led the UX from research to handover, and NZTA approved it. More than 150 customers use it, and workshops tell us it saves at least 10 minutes on every WOF.</p>
     <p style="max-width:62ch"><b>Technician app.</b> iOS and Android app that replaced paper job cards. Tested with more than ten technicians in their own workshops, built for gloves, noise and poor signal, and now used by every technician at our customer workshops.</p>
     <p style="max-width:56ch;margin-top:24px">Turn on JavaScript to see the full case studies. In the meantime you can reach me directly:</p>
     <ul style="list-style:none;padding:0;line-height:2">
@@ -1841,6 +1975,9 @@ awPoOrder: 'awPoOrder.webp',
   scWalkTpl: 'scWalkTpl.webp',
   scWalkApp: 'scWalkApp.webp',
   scHomeWof: 'scHomeWof.webp',
+  cineTablet: 'cineTablet.webp',
+  cineLaptop: 'cineLaptop.webp',
+  cinePhone: 'cinePhone.webp',
   scHomeCustom: 'scHomeCustom.webp',
   mp_dashboard_0: 'mp_dashboard_0.webp',
   mp_dashboard_1: 'mp_dashboard_1.webp',
@@ -1984,7 +2121,7 @@ const PHONES=(v,cap)=>({t:'phones',v,cap});
 
 const CASES = [
 {
-  id:'auxo-workshop', accent:'#00756A', head:"radial-gradient(1000px 480px at 86% -14%, rgba(0,187,165,.30), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(38,142,239,.16), transparent 60%), linear-gradient(160deg,#001A3A,#03284C 60%,#06192E)", tile:'Auxo Workshop', tint:'linear-gradient(145deg,#001A44,#00396B 55%,#00BBA5)', claim:"I designed the platform 320+ workshops run their day on",
+  id:'auxo-workshop', thumb:'tileAW.webp', accent:'#00756A', head:"radial-gradient(1000px 480px at 86% -14%, rgba(0,187,165,.30), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(38,142,239,.16), transparent 60%), linear-gradient(160deg,#001A3A,#03284C 60%,#06192E)", tile:'Auxo Workshop', tint:'linear-gradient(145deg,#001A44,#00396B 55%,#00BBA5)', claim:"I designed the platform 320+ workshops run their day on",
   brief:{problem:"Thirty years of Auxo products, and software that recorded a workshop's day instead of reducing it.",role:"Sole UX designer across the platform from concept to delivery, later also Product Owner. Established the Auxo Design System.",outcome:"320+ workshops in New Zealand and Australia have moved off paper onto it. Over 90% take bookings online, and larger brand workshops report revenue up at least 20%."}, no:'01', tag:'Platform design / Platform rebuild',
   title:'Auxo Workshop',
   chip:['chip-live','Live, 320+ businesses'],
@@ -1992,7 +2129,7 @@ const CASES = [
   lede:'Auxo has built software for the New Zealand automotive industry for over thirty years. Auxo Workshop consolidates all of it into one modern platform, designed to reduce a workshop owner\u2019s admin instead of adding to it.',
   spec:[
     ['My role','Sole UX designer, later also Product Owner'],
-    ['Team','One and a half designers at the start, eight developers'],
+    ['Team','Me, with a part time contractor at the start, and eight developers'],
     ['Timeline','First official sprint May 2023, ongoing'],
     ['Platform','Web, responsive, plus companion mobile app'],
     ['Tools','Miro, Figma, Google Forms, Userpilot, Clarity'],
@@ -2001,14 +2138,13 @@ const CASES = [
   ],
   blocks:[
     PILLS(['320+ businesses using my work','Live in NZ and Australia','Sole designer, 8 developers','Designing AI into the product']),
-    {t:'stats',v:[['320+','workshops moved off pen and paper'],['90%+','take bookings online, not by phone'],['20%+','revenue growth reported by larger brand workshops'],['Margin','targets met by most workshops, through the price matrix and margin check']]},
+    {t:'stats',v:[['320+','workshops moved off pen and paper'],['90%+','take bookings online, not by phone'],['20%+','revenue growth reported by larger brand workshops']]},
     H('Where it started'),
     P('For over three decades Auxo has built software for New Zealand\u2019s automotive industry: SAM, Orion, webSAM and Systime. Recognising the need to move with new technology and changing expectations, Auxo decided to rebuild.'),
     P('The team committed to a new version of the Workshop app that consolidates the features of every existing Auxo application, designed to serve users in both New Zealand and Australia over the next three years.'),
 
     H('What we already knew'),
     P('webSAM gave us a head start. It is a product already in customers\u2019 hands, which meant real insight into how workshops operate and where the pain sits. A large existing customer base also meant we could gather feedback and recruit for testing.'),
-    ENDORSE('This new webSAM is a <em>game changer</em>. It saves workshop owners significant time on daily tasks and measurably boosts revenue and profit.','Dave Murdoch','CEO, Auxo Software','DM'),
 
     H('What the platform needed'),
     OL([
@@ -2141,6 +2277,8 @@ const CASES = [
     H('A game that teaches the product'),
     P('I also turned the prototype into a timed game. Players pick a real task, such as adding a booking, ordering a part, raising a purchase order or generating an invoice, and race the clock to find their own way through it. Axel, the Auxo mascot, celebrates each finish, with workshop records, streaks and a running count of tasks done, so learning the product feels like a challenge rather than training.'),
     P('It helps customers learn the product faster, and sales and marketing use it a lot at events, where it gets people trying the product hands-on in a couple of minutes instead of watching a demo.'),
+    STATS([['350+','people played it at Capricorn events in Australia'],['40+','potential customers now in talks to buy']]),
+    NOTE('What the events showed','Sales and customer success came back with strong feedback, and so did the people who played it. A two minute game did what a demo usually struggles to do: it got people using the real product and talking to sales afterwards.'),
     IMG('game-pick-a-task.png','Pick a task and the clock starts straight away: add a booking, order a part, create a purchase order or generate an invoice. Finding the right screen counts towards the time.','1360/1200',A.gamePick),
     IMG('game-timer-running.png','The timer runs in a bar at the bottom of the screen while the player works through the real booking flow, with Finish and Can\u2019t find it always in reach.','1600/1000',A.gameRun,'browser'),
     IMG('game-result.png','The result: Axel, the Auxo mascot, celebrates the time, flags a workshop record, and counts tasks done and streaks.','1160/1000',A.gameDone),
@@ -2253,10 +2391,10 @@ const CASES = [
   ]
 },
 {
-  id:'smartcheck', accent:'#1565C0', head:"radial-gradient(1000px 480px at 86% -14%, rgba(38,142,239,.34), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(0,187,165,.12), transparent 60%), linear-gradient(160deg,#00163A,#04234E 60%,#071B33)", tile:'SmartCheck Pro', tint:'linear-gradient(145deg,#001A44,#00306F 55%,#268EEF)', claim:"I took Warrant of Fitness inspections from paper to an NZTA-approved web app",
+  id:'smartcheck', thumb:'tileSC.webp', accent:'#1565C0', head:"radial-gradient(1000px 480px at 86% -14%, rgba(38,142,239,.34), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(0,187,165,.12), transparent 60%), linear-gradient(160deg,#00163A,#04234E 60%,#071B33)", tile:'SmartCheck Pro', tint:'linear-gradient(145deg,#001A44,#00306F 55%,#268EEF)', claim:"I took Warrant of Fitness inspections from paper to an NZTA-approved web app",
   brief:{problem:"Warrant of Fitness inspections in New Zealand were done on paper, which was slow, error prone and hard to keep records from.",role:"Sole UX designer. Research, prototyping, NZTA validation and handover, with a part time contractor in phase one.",outcome:"NZTA approved and in market. Workshops moved from paper to tablets, and tell us it saves at least 10 minutes on every WOF."}, no:'02', tag:'Mobile responsive web app / Compliance',
   title:'SmartCheck Pro (e&#8209;WOF)',
-  chip:['chip-live','Live, NZTA approved'],
+  chip:['chip-live','NZTA approved, 150+ customers'],
   sum:'A mobile responsive web app, used on tablets, that lets NZTA certified technicians run fully digital Warrant of Fitness inspections, approved to replace pen and paper checklists.',
   lede:'Every Warrant of Fitness inspection in New Zealand used to be done on paper. SmartCheck Pro turns that clipboard into a guided digital inspection that NZTA has approved.',
   spec:[
@@ -2270,7 +2408,7 @@ const CASES = [
   ],
   blocks:[
     PILLS(['NZTA approved inspection app','Live in market','Sole UX designer']),
-    {t:'stats',v:[['10 min','saved on every WOF, a 25% cut, workshops tell us'],['+33%','inspection capacity, up to $160 an hour from $120'],['NZTA','approved it to replace paper']]},
+    {t:'stats',v:[['150+','customers use it'],['70+','checksheets a day at the busiest workshops'],['10 min','saved on every WOF, a 25% cut, workshops tell us'],['+33%','inspection capacity, up to $160 an hour from $120']]},
     H('The problem'),
     P('Warrant of Fitness inspections in New Zealand were carried out manually, on paper. The process took time, invited human error, and made it hard for a workshop to keep consistent, accurate records.'),
     P('Auxo saw the opening: what if NZTA certified workshops had a standalone digital application to manage WOF inspections end to end?'),
@@ -2436,7 +2574,7 @@ const CASES = [
   ]
 },
 {
-  id:'auxo-mobile', accent:'#4237D6', head:"radial-gradient(1000px 480px at 86% -14%, rgba(128,121,255,.36), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(66,55,214,.24), transparent 60%), linear-gradient(160deg,#150F5E,#1D1878 60%,#120E42)", tile:'Auxo Workshop Mobile', tint:'linear-gradient(145deg,#241F86,#4237D6 55%,#8079FF)', claim:"I put the whole workshop in a technician's pocket",
+  id:'auxo-mobile', thumb:'tileMobile.webp', accent:'#4237D6', head:"radial-gradient(1000px 480px at 86% -14%, rgba(128,121,255,.36), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(66,55,214,.24), transparent 60%), linear-gradient(160deg,#150F5E,#1D1878 60%,#120E42)", tile:'Auxo Workshop Mobile', tint:'linear-gradient(145deg,#241F86,#4237D6 55%,#8079FF)', claim:"I put the whole workshop in a technician's pocket",
   brief:{problem:"Paper job cards got lost, arrived unreadable, and turned into admin for somebody else.",role:"Sole UX designer. Research in three workshops, prototyping, and usability testing with more than ten technicians.",outcome:"Every technician at our customer workshops now works from the app instead of a paper job card. Real clocked hours give workshops accurate margins and room to take on more jobs."}, no:'03', tag:'Mobile app, iOS and Android',
   title:'Auxo Workshop Mobile',
   chip:['chip-live','Live, iOS and Android'],
@@ -2662,7 +2800,7 @@ const CASES = [
   ]
 },
 {
-  id:'websam-mobile', archive:true, year:'2022', accent:'#C0390F', head:"radial-gradient(1000px 480px at 86% -14%, rgba(244,81,30,.30), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(38,142,239,.14), transparent 60%), linear-gradient(160deg,#0A1B33,#102848 60%,#0B1424)", tile:'Technician app', tint:'linear-gradient(145deg,#0A1E3F,#123E7E 55%,#F4511E)', claim:"I got technicians photographing the work instead of describing it",
+  id:'websam-mobile', thumb:'arcWebsam.webp', archive:true, year:'2022', accent:'#C0390F', head:"radial-gradient(1000px 480px at 86% -14%, rgba(244,81,30,.30), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(38,142,239,.14), transparent 60%), linear-gradient(160deg,#0A1B33,#102848 60%,#0B1424)", tile:'Technician app', tint:'linear-gradient(145deg,#0A1E3F,#123E7E 55%,#F4511E)', claim:"I got technicians photographing the work instead of describing it",
   brief:{problem:"WebSAM had no mobile design, and competitors' native apps were being reviewed badly for promising a full system on a phone.",role:"Sole UX designer, working alone inside real technical constraints.",outcome:"Shipped as a mobile web app scoped to three jobs a phone does better than a desktop, including photo backed recommendations."}, no:'04', tag:'Mobile web app',
   title:'Technician App (WebSAM)',
   chip:['chip-live','Shipped'],
@@ -2788,7 +2926,7 @@ const CASES = [
   ]
 },
 {
-  id:'fresh-market', archive:true, year:'2020', accent:'#3D7A14', head:"radial-gradient(1000px 480px at 86% -14%, rgba(140,198,63,.28), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(31,122,77,.26), transparent 60%), linear-gradient(160deg,#0A2418,#0F3323 60%,#081C13)", tile:'Fresh Market', tint:'linear-gradient(145deg,#0E3524,#1F7A4D 55%,#8CC63F)', claim:"I made buying fruit online feel like standing in the shop",
+  id:'fresh-market', thumb:'arcFresh.webp', archive:true, year:'2020', accent:'#3D7A14', head:"radial-gradient(1000px 480px at 86% -14%, rgba(140,198,63,.28), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(31,122,77,.26), transparent 60%), linear-gradient(160deg,#0A2418,#0F3323 60%,#081C13)", tile:'Fresh Market', tint:'linear-gradient(145deg,#0E3524,#1F7A4D 55%,#8CC63F)', claim:"I made buying fruit online feel like standing in the shop",
   brief:{problem:"People buy almost anything online, then walk to a shop for tomatoes, because being there is the only way to judge the produce.",role:"UX designer in a team of four. Research, journey mapping, ideation and usability testing.",outcome:"Six validated design concepts, including live shopping and layered substitution, plus a card sorted category structure the competitors did not have."}, no:'05', tag:'E-commerce / Research led',
   title:'Fresh Market',
   chip:['chip-concept','Concept project'],
@@ -2901,7 +3039,7 @@ const CASES = [
   ]
 },
 {
-  id:'artesa', archive:true, year:'2021', accent:'#8A4370', head:"radial-gradient(1000px 480px at 86% -14%, rgba(211,162,191,.30), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(122,59,102,.30), transparent 60%), linear-gradient(160deg,#1E0E19,#2E1528 60%,#170B13)", tile:'Artesa Design', tint:'linear-gradient(145deg,#2A1424,#7A3B66 55%,#D3A2BF)', claim:"I named a business, then built the shop around it",
+  id:'artesa', thumb:'arcArtesa.webp', archive:true, year:'2021', accent:'#8A4370', head:"radial-gradient(1000px 480px at 86% -14%, rgba(211,162,191,.30), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(122,59,102,.30), transparent 60%), linear-gradient(160deg,#1E0E19,#2E1528 60%,#170B13)", tile:'Artesa Design', tint:'linear-gradient(145deg,#2A1424,#7A3B66 55%,#D3A2BF)', claim:"I named a business, then built the shop around it",
   brief:{problem:"A business with no name, no brand and a website that had to sell handmade products and a design service at the same time.",role:"UX designer in a team of two, from market research and naming through to information architecture and prototype.",outcome:"A brand name validated across two surveys with 121 respondents, a logo, and a card sorted shop structure ready for Shopify."}, no:'06', tag:'Brand and e-commerce',
   title:'Artesa Design',
   chip:['chip-concept','Concept project'],
@@ -3005,7 +3143,7 @@ const CASES = [
   ]
 },
 {
-  id:'coffee-coin', archive:true, year:'2021 to 2022', accent:'#8A5A00', head:"radial-gradient(1000px 480px at 86% -14%, rgba(233,169,60,.30), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(120,74,30,.30), transparent 60%), linear-gradient(160deg,#140D06,#2A1A0B 60%,#0F0A05)", tile:'Coffee Coin', tint:'linear-gradient(145deg,#0D0906,#2A1A0B 45%,#E9A93C)', claim:"I turned a wallet of loyalty cards into one barcode",
+  id:'coffee-coin', thumb:'arcCoffee.webp', archive:true, year:'2021 to 2022', accent:'#8A5A00', head:"radial-gradient(1000px 480px at 86% -14%, rgba(233,169,60,.30), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(120,74,30,.30), transparent 60%), linear-gradient(160deg,#140D06,#2A1A0B 60%,#0F0A05)", tile:'Coffee Coin', tint:'linear-gradient(145deg,#0D0906,#2A1A0B 45%,#E9A93C)', claim:"I turned a wallet of loyalty cards into one barcode",
   brief:{problem:"Cafes will not pay for a loyalty app, and they cannot spare three seconds at the counter during a rush.",role:"Sole UX designer. Market research, competitive analysis, flows, prototype and usability testing.",outcome:"The research changed the business model, not the interface. Free for shops, a token to scan, and a phase one app that does two things only."}, no:'07', tag:'Mobile app / Loyalty',
   title:'Coffee Coin',
   chip:['chip-concept','Concept project'],
@@ -3478,7 +3616,7 @@ function renderBlock(b){
     case 'quote':return `<blockquote class="quote rv"><p>${b.v}</p><cite>${b.by}</cite></blockquote>`;
     case 'pairs':return `<div class="pairs rv">${b.v.map(([k,v])=>`<div class="pair"><div class="pair-k">${k}</div><div class="pair-v">${v}</div></div>`).join('')}</div>`;
     case 'checks':return `<ul class="checks rv">${b.v.map(i=>`<li><span>${i}</span></li>`).join('')}</ul>`;
-    case 'stats':return `<div class="stats rv">${b.v.map(([n,l])=>`<div class="stat"><b>${n}</b><span>${l}</span></div>`).join('')}</div>`;
+    case 'stats':return `<div class="stats rv">${b.v.map(([n,l],i)=>`<div class="stat" style="--i:${i}"><b>${n}</b><span>${l}</span></div>`).join('')}</div>`;
     case 'methods': return `<div class="methods rv">
       <div><span class="mono">Research</span><ul>${b.research.map(x=>`<li>${x}</li>`).join('')}</ul></div>
       <div><span class="mono">Design</span><ul>${b.design.map(x=>`<li>${x}</li>`).join('')}</ul></div>
@@ -3540,7 +3678,7 @@ function pageHome(){
           <img src="${A.portrait}" alt="Mona Moazed" width="680" height="850">
         </figure>
       </div>
-      <p class="now"><b>Right now</b> I'm the only UX designer at Auxo Software, where I look after Auxo Workshop and SmartCheck Pro, and I've recently started picking up Product Owner work as well. <span class="status" style="margin-left:6px"><i></i> Open to opportunities</span></p>
+      <p class="now"><b>Right now</b> I'm the only UX designer at Auxo Software, where I look after Auxo Workshop and SmartCheck Pro, and I've recently started picking up Product Owner work as well. <span class="status" style="margin-left:6px"><i></i> Open to Product Designer roles</span></p>
     </div>
   </section>
 
@@ -3548,12 +3686,10 @@ function pageHome(){
     <div class="wrap">
       <div class="sec-head rv">
         <h2>Things I've made</h2>
-        <span class="mono">${CASES.filter(c=>!c.archive).length} case studies</span>
       </div>
       <div class="index">
         ${CASES.filter(c=>!c.archive).map(c=>`
         <a class="job" href="#/case/${c.id}">
-          <span class="job-no">${c.no}</span>
           <span class="job-thumb" aria-hidden="true">${
             c.thumb
               ? `<img src="${c.thumb}" alt="" loading="lazy">`
@@ -3571,34 +3707,54 @@ function pageHome(){
     </div>
   </section>
 
-  <section class="reel" id="reel" data-mode="play" aria-labelledby="reelH">
-    <div class="reel-track">
-      <div class="reel-stage">
-        <span class="reel-glow" aria-hidden="true"></span>
-        <span class="reel-brackets" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-        <h2 class="reel-ux" id="reelH"><span>U</span><span>X</span><span class="vh">, six stages ending in deliver and measure</span></h2>
-        <div class="reel-scene">
-        <article class="stg" data-i="0"><span class="no">01</span><span class="lb">Discover / research</span><span class="sb">Interviews, observation, journey mapping with the people who do the job</span></article>
-        <article class="stg" data-i="1"><span class="no">02</span><span class="lb">Define</span><span class="sb">Personas, problem framing, and an honest scope</span></article>
-        <article class="stg" data-i="2"><span class="no">03</span><span class="lb">Ideate</span><span class="sb">Brainstorming, competitor review, sketching wide before narrowing</span></article>
-        <article class="stg" data-i="3"><span class="no">04</span><span class="lb">Design / prototype</span><span class="sb">Low fidelity through to high, prototyped in Figma</span></article>
-        <article class="stg" data-i="4"><span class="no">05</span><span class="lb">Test / validate</span><span class="sb">Usability testing with real technicians, then iterate</span></article>
-        <article class="stg" data-i="5"><span class="no">06</span><span class="lb">Deliver &amp; measure</span><span class="sb">Handover, then Clarity and Userpilot to see what actually happened</span></article>
+  <section class="cine" id="cine" aria-labelledby="cineH">
+    <div class="cine-pin">
+      <div class="cine-bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><span class="cine-grid"></span><span class="cine-grain"></span></div>
+      <div class="cine-wrap">
+        <div class="cine-copy">
+          <h2 class="vh" id="cineH">From clipboard to screen: how my work changed the workshop</h2>
+          <div class="cine-cap" data-s="0"><span class="mono">Where it started</span><h3>Every workshop ran on <em>paper</em>.</h3><p>Clipboards, carbon copies and job cards that got lost, smudged or re&#8209;typed at the end of the day.</p></div>
+          <div class="cine-cap" data-s="1"><span class="mono">SmartCheck Pro</span><h3>So I put the inspection on a <em>tablet</em>.</h3><p>A guided Warrant of Fitness inspection that NZTA approved to replace the paper checksheet.</p></div>
+          <div class="cine-cap" data-s="2"><span class="mono">Auxo Workshop</span><h3>Then I rebuilt the whole <em>workshop</em>.</h3><p>Bookings, jobs, parts and invoices on one platform, designed so owners stop doing admin at night.</p></div>
+          <div class="cine-cap" data-s="3"><span class="mono">Technician app</span><h3>And put it in every technician&rsquo;s <em>pocket</em>.</h3><p>Jobs, clocking, photos and parts on iOS and Android, built for gloves, noise and no signal.</p></div>
+          <div class="cine-cap" data-s="4"><span class="mono">How I work</span><h3>Research. Design. Ship. <em>Measure</em>.</h3><p>Every one of these went through the same process, tested with real technicians before it was built.</p>
+            <div class="cine-cta"><a class="btn-a" href="#/case/auxo-workshop">Auxo Workshop <span aria-hidden="true">&#8594;</span></a><a class="btn-b" href="#/case/smartcheck">SmartCheck Pro</a><a class="btn-b" href="#/case/auxo-mobile">Technician app</a></div></div>
         </div>
-        <span class="reel-bar" aria-hidden="true"></span>
+        <div class="cine-stage" aria-hidden="true">
+          <div class="cine-clip" data-k="clip">
+            <span class="clip-top"></span>
+            <div class="clip-paper">
+              <b>Warrant of Fitness &middot; Checksheet</b>
+              <svg viewBox="0 0 200 190" class="clip-lines">
+                <g class="rows"><line x1="40" y1="20" x2="190" y2="20"/><line x1="40" y1="52" x2="170" y2="52"/><line x1="40" y1="84" x2="185" y2="84"/><line x1="40" y1="116" x2="160" y2="116"/><line x1="40" y1="148" x2="178" y2="148"/><line x1="40" y1="180" x2="150" y2="180"/></g>
+                <g class="boxes"><rect x="8" y="10" width="20" height="20"/><rect x="8" y="42" width="20" height="20"/><rect x="8" y="74" width="20" height="20"/><rect x="8" y="106" width="20" height="20"/><rect x="8" y="138" width="20" height="20"/><rect x="8" y="170" width="20" height="20"/></g>
+                <g class="ticks"><path d="M11 20 l6 6 l10 -12"/><path d="M11 52 l6 6 l10 -12"/><path d="M11 84 l6 6 l10 -12"/><path d="M12 108 l14 14 M26 108 l-14 14" class="x"/><path d="M11 148 l6 6 l10 -12"/><path d="M11 180 l6 6 l10 -12"/></g>
+              </svg>
+              <span class="clip-scan"></span>
+            </div>
+          </div>
+          <div class="cine-lap" data-k="lap"><div class="lap-screen"><img src="${A.cineLaptop}" alt=""></div><span class="lap-base"></span></div>
+          <div class="cine-tab" data-k="tab"><div class="tab-screen"><img src="${A.cineTablet}" alt=""></div></div>
+          <div class="cine-ph" data-k="ph"><div class="ph-screen"><img src="${A.cinePhone}" alt=""></div></div>
+          <span class="cine-chip" data-in=".27" data-out=".5" style="--x:-4%;--y:6%">NZTA approved</span>
+          <span class="cine-chip" data-in=".31" data-out=".5" style="--x:70%;--y:16%"><b>150+</b> customers</span>
+          <span class="cine-chip" data-in=".35" data-out=".5" style="--x:58%;--y:84%"><b>70+</b> checksheets a day</span>
+          <span class="cine-chip" data-in=".53" data-out=".72" style="--x:-2%;--y:12%"><b>320+</b> workshops</span>
+          <span class="cine-chip" data-in=".57" data-out=".72" style="--x:4%;--y:82%"><b>90%+</b> book online</span>
+          <span class="cine-chip" data-in=".76" data-out=".9" style="--x:78%;--y:4%">iOS &amp; Android</span>
+          <span class="cine-chip" data-in=".79" data-out=".9" style="--x:74%;--y:90%">Works offline</span>
+        </div>
       </div>
-      <div class="reel-static">
-        <article class="stg" data-i="0"><span class="no">01</span><span class="lb">Discover / research</span><span class="sb">Interviews, observation, journey mapping with the people who do the job</span></article>
-        <article class="stg" data-i="1"><span class="no">02</span><span class="lb">Define</span><span class="sb">Personas, problem framing, and an honest scope</span></article>
-        <article class="stg" data-i="2"><span class="no">03</span><span class="lb">Ideate</span><span class="sb">Brainstorming, competitor review, sketching wide before narrowing</span></article>
-        <article class="stg" data-i="3"><span class="no">04</span><span class="lb">Design / prototype</span><span class="sb">Low fidelity through to high, prototyped in Figma</span></article>
-        <article class="stg" data-i="4"><span class="no">05</span><span class="lb">Test / validate</span><span class="sb">Usability testing with real technicians, then iterate</span></article>
-        <article class="stg" data-i="5"><span class="no">06</span><span class="lb">Deliver &amp; measure</span><span class="sb">Handover, then Clarity and Userpilot to see what actually happened</span></article>
+      <div class="cine-rail">
+        <button class="cine-play" type="button" aria-label="Pause the story"><span class="ic" aria-hidden="true"></span></button>
+        <ol>
+          <li><button type="button" data-go="0"><i><b></b></i><span>Paper</span></button></li>
+          <li><button type="button" data-go="1"><i><b></b></i><span>Inspection</span></button></li>
+          <li><button type="button" data-go="2"><i><b></b></i><span>Platform</span></button></li>
+          <li><button type="button" data-go="3"><i><b></b></i><span>Pocket</span></button></li>
+          <li><button type="button" data-go="4"><i><b></b></i><span>Measure</span></button></li>
+        </ol>
       </div>
-    </div>
-    <div class="reel-foot">
-      <p><b>The last stage is the one most people skip.</b> Shipping is not the finish line. Measuring is where the next round of research starts.</p>
-      <span class="cue">Scroll<i aria-hidden="true"></i></span>
     </div>
   </section>
 
@@ -3612,6 +3768,7 @@ function pageHome(){
       <div class="arc-grid">
         ${CASES.filter(c=>c.archive).map(c=>`
         <a class="arc" href="#/case/${c.id}" style="--ca:${c.accent}">
+          ${c.thumb?`<span class="arc-thumb" aria-hidden="true"><img src="${c.thumb}" alt="" loading="lazy"></span>`:''}
           <span class="arc-top"><span class="mono">${c.year}</span><span class="mono">${c.tag}</span></span>
           <span class="arc-name">${c.title}</span>
           <span class="arc-claim">${c.claim}</span>
@@ -3626,13 +3783,10 @@ function pageHome(){
 
   <section class="band">
     <div class="wrap">
-      <div class="sec-head rv"><h2>How I work</h2><span class="mono">Approach</span></div>
+      <div class="sec-head rv"><h2>How I work</h2></div>
       <div class="col rv">
-        <p style="font-size:1.12rem;line-height:1.55">With a background in software engineering and art, I see products from both sides: how they're built, and how they should feel. Over five years I've learned that good product design is mostly systems thinking in disguise. Four of those years were in automotive here in New Zealand, building an inspection app that won regulatory approval and designing a workshop platform now serving 320+ businesses.</p>
-        <p>As the sole designer at Auxo I own the lot, from discovery through to shipping: research, information architecture, design systems, handover to engineering. There's no review gate. I work directly with developers to get things built.</p>
-        <p>Design systems aren't component libraries, they're products. You maintain them like products, think about adoption, and mentor people into using them well. What I build are the patterns other people reach for because they're faster than a one-off.</p>
-        <p>I'm moving into product ownership because I already think like a product person: breaking down complex features, triaging backlogs, writing user stories that actually ship. I use AI every day, Claude for research and thinking, Figma Make for rapid prototyping, because the fastest way to know whether an idea works is to build it and test it.</p>
-        <p>Accessibility is standard practice, not an afterthought. And I spend time on site watching how people really work, designing around real constraints, like what happens when you're wearing gloves or trying to move fast under pressure.</p>
+        <p style="font-size:1.12rem;line-height:1.55">With a background in software engineering and art, I see products from both sides: how they're built, and how they should feel. I've spent the last four years designing for New Zealand's automotive industry, and I spend time on site watching how technicians really work, with gloves on, in noise, and short on time.</p>
+        <p>As the sole designer at Auxo I own the design decisions from discovery to shipping, test them with customers before they're built, and work directly with developers. I'm now picking up Product Owner work too: breaking down features, prioritising the backlog and writing user stories.</p>
         <a class="outlink" href="#/about">More about me <span aria-hidden="true">&#8594;</span></a>
       </div>
     </div>
@@ -3641,7 +3795,7 @@ function pageHome(){
   `;
 }
 
-const STORIES = {"smartcheck": [["Context", "Turning a paper inspection into a legal digital one", "Every Warrant of Fitness in New Zealand was done on paper: slow, easy to get wrong, and hard to keep records from. Auxo wanted a standalone app that NZTA certified workshops could use from start to finish. I led the UX from research through to handover, with a part time contractor in phase one and on my own since. The whole project hung on one thing: NZTA approving it, so the inspection is legally complete inside the software.", ["ewof_1.png"], ["The problem", "The vision", "Scope, and who I worked with"]], ["Discover", "Watching technicians inspect real vehicles", "I spent time with NZTA certified technicians in their workshops, through interviews, observation and feedback sessions, to see how an inspection really runs and where paper hurts. They wanted checklists that mirror their paper flow, photos as evidence, predefined failure reasons, and a warning before they break a rule. The competitors I looked at were digital checklists that still ended in printing and re-keying. Direct NZTA integration became the difference.", [], ["Understanding the technicians", "Competitive analysis"]], ["Define", "What each finding changed", "Each finding became a design rule. Technicians carry a tablet in a noisy, badly lit workshop, so the app is tablet first with large targets. They start wherever the vehicle lets them, so there is no fixed order, but every mandatory check is still enforced. Bookings link to inspections so nothing is entered twice. Two personas carried this: Mark, the inspector, and Karen, the administrator who answers for the record in an audit.", ["eWOF - Persona.jpg (1 of 2)"], ["Research findings, and what each one changed", "Persona"]], ["Ideate", "The same process, plus a regulator", "Every epic ran through the same seven steps I use on Auxo Workshop, from user journey to handover. The difference was validation. A flow wasn't finished when the team liked it; it had to survive a review against NZTA regulation before anyone built it. I worked from the Auxo Design System from day one, so the app looks and behaves like the rest of the suite.", [], ["Design process"]], ["Design & prototype", "Designing for a tablet in a workshop", "I designed for the iPad first, for touch and legibility, and took the mid fidelity flow from login through inspection to the generated checksheet. This is where it ended up: every section on one screen, a coloured edge when a section is done, warnings and fails shown on the section they belong to, and totals at the top that the technician checks before submitting.", ["tablets:Technician: inspection home", "vid"], ["Initial design, mid fidelity"]], ["Test & validate", "The test that changed the app", "Testing the mid fidelity prototype, before development started, showed the first design was wrong. Inspectors had to scroll the checklist to find each section, which slowed them down and didn't match how they work. I redesigned the main page to show every section at a glance, and workshops can set their own section order. Catching it at prototype stage cost a few screens. The validated prototype then went to NZTA, who approved it.", ["Archive_WOF.png"], ["The iteration that changed the app", "Final prototype and validation"]], ["Deliver & measure", "From epics to the document NZTA needs", "I split the workflow into epics with user stories, acceptance criteria and UI specs, and grew the checklist component in four phases: pass and fail, failure reasons and position, photos on failed items, then photos everywhere. The output is what NZTA and the vehicle owner actually need: a checksheet where a fail and its re-inspection sit together, struck through rather than deleted. SmartCheck Pro is approved and in market. Workshops moved straight from paper checksheets to tablets, and their feedback is consistent: at least 10 minutes saved on every WOF, which turns 40 minutes into 30 and could lift an inspector from $120 to $160 an hour when bookings are full, and custom checksheets they describe as a game changer.", ["WOF_Faild_and_rechecked.png", "html"], ["Building the checklist in phases", "Breaking the flow down for development", "The document at the end of it"]], ["Since launch", "Checksheets workshops build themselves", "Phase two turned one regulated inspection into a tool workshops shape themselves. They build their own checksheets, like a 25 point check or a pre purchase inspection, while the WOF stays locked to the structure NZTA approved. Workshop owners called it a game changer, not for the builder but because results now sit against the vehicle instead of in long notes. I also added a walkaround for marking damage, and I'm researching QMS forms now.", ["checksheet-templates.png"], ["Customise checksheet", "The walkaround", "QMS forms, in research now", "What is next"]], ["Reflection", "What I’d do differently", "SmartCheck Pro worked, and NZTA approved it. Looking back, three things would have made it stronger.", [], [], ["<b>Test in the bay, not just in the office.</b> The final prototype was tested internally before it went to NZTA. I’d put it in front of inspectors in their own workshops first, the same way the section navigation problem was caught.", "<b>Measure the before.</b> The 10 minute saving comes from workshop feedback. I’d time a set of paper inspections before launch, so the saving is something we measured, not something we were told.", "<b>Bring accessibility forward.</b> Touch target and colour issues showed up once technicians were using the product. Checking them in mid fidelity, with gloves and bad light in mind, would have caught them earlier."]]], "auxo-workshop": [["Context", "Thirty years of software, rebuilt as one platform", "Auxo has built software for New Zealand's automotive industry for more than thirty years, across SAM, Orion, webSAM and Systime. Auxo Workshop rebuilds all of it as one platform for New Zealand and Australia. I've been the sole UX designer from concept to delivery, working with eight developers, and later took on Product Owner work too. webSAM gave us a head start: real customers, known pain points, and people to test with.", ["endorse"], ["Where it started", "What we already knew", "What the platform needed"]], ["Discover", "Software that recorded the day instead of reducing it", "A SWOT analysis of Shop Monkey, Mechanic Desk, Workshop Software and Black Purl showed where the gaps were. Talking to workshops showed the bigger problem: owners doing admin in the evenings and at weekends, because their software recorded the day instead of reducing it. That became the brief for every screen. If it adds a single step to someone's evening, it has failed.", [], ["Competitive analysis", "The challenges workshops actually face"]], ["Define", "Two generations on the same screen", "Two generations run these businesses. The older one, often a mechanic with a partner doing the admin, is used to pen and paper and wants it simple. The newer one is taking over the family business, lives on their phone and wants to modernise. The product has to work for both on the same screen, which ruled out anything that only makes sense to a power user.", [], ["Who we are designing for"]], ["Ideate", "Proving the concept to the board", "Three years of ideas had to become something the board could approve. With the Product Manager and General Manager I mapped the business user journey, ran the brainstorming that shaped a multi-year roadmap, and built low fidelity flows and a prototype. The board approved it and development began. From then on every epic followed seven steps: journey, competitor research, low and mid fidelity, prototype, testing, high fidelity, handover.", ["low-fi.png"], ["History: proving the concept", "Design process"]], ["Design & prototype", "The workboard and the job card", "The workboard reflects how a workshop thinks: vehicles moving through states, not a list of tasks, including Invoiced and Collected, the two states most software leaves out. The job card is where almost everything happens, so it carries a lot without feeling heavy. Behind both sits the Auxo Design System I built on Ant Design, with a UX guideline so eight developers can build consistently when I'm not in the room.", ["workboard-01-2048x1234.jpg"], ["What a workshop sees", "First problem: the job card", "Guidelines and components", "Making a booking", "Availability calendar", "Service templates"]], ["Test & validate", "Testing before high fidelity, and after launch", "User testing is step five of every epic, before high fidelity, with customers matched to our personas, and every feature goes through beta with real workshops before release. Testing didn't stop at launch. Customers told us the smart service templates were too dynamic for some teams, so phase two added fixed templates that do exactly what the workshop sets.", ["quote"], ["Testing with customers"]], ["Deliver & measure", "Live, measured, and played at events", "Auxo Workshop is live with 320+ workshop businesses in New Zealand and Australia, almost all of whom started on pen and paper. Over 90% now take bookings online, which means far fewer phone calls at the front desk, and automated reminders have replaced chasing customers by hand. The price matrix sets each part’s price from its cost, and the margin check flags any line that falls below the workshop’s target, so most workshops now reach the margin they set, and larger brand workshops have told us their revenue is up at least 20% since moving to Auxo Workshop. After release I use Clarity and Userpilot to see how features are really used. I also turned the prototype into a timed game: pick a real task, find your own way through it, beat the clock. It helps customers learn the product faster, and sales and marketing use it at events.", ["html", "game-timer-running.png"], ["Where it is now", "A game that teaches the product"]], ["Since launch", "Two years of features, one process", "Every feature since launch has run through the same process: multi-day jobs, fixed templates, parts and purchase orders, loan cars, additional contacts, automation, and now AI. Parts ordering is a good example. One job often needs parts from several suppliers, so the admin loads the job's parts once and the system raises a separate purchase order per supplier. For AI my rule is simple: AI drafts, the person decides. Since taking on Product Owner work, I also write the user stories and help prioritise the backlog for these features.", ["aw-purchase-list.png"], ["Multi-day jobs", "Fixed templates, because customers asked", "Parts and inventory", "Loan car management", "Additional contacts", "Automation", "Designing AI into the workshop"]], ["Reflection", "What I’d do differently", "Auxo Workshop is the biggest thing I have designed, and the feedback has taught me as much as the research did.", [], [], ["<b>Design the first month, not just the product.</b> One owner told us they were ready to throw the computer out the window in their first month. Onboarding and data migration deserved the same design attention as the job card. The game came later and helped, but it should have been part of launch.", "<b>Test automation levels with more kinds of workshop.</b> Smart templates suited many teams but felt too dynamic for admin heavy and franchise workshops, which is why fixed templates followed. Testing with those workshops earlier would have shipped both options together.", "<b>Instrument from day one.</b> Clarity and Userpilot came in after release, so some early decisions have no baseline to compare against. I’d set up the key events before the first feature shipped."]]], "auxo-mobile": [["Context", "Getting technicians off paper job cards", "Technicians hold on to paper job cards right up until one gets lost, arrives unreadable, or turns into admin for someone else. Auxo Workshop Mobile puts the job on their phone instead: their jobs, the clock, parts, photos and notes. I was the sole UX designer, with part time contract support early on, from September 2024 until phase one launched on 4 December.", ["Auxo-Workshop-Mobile.jpg"], ["The idea"]], ["Discover", "Starting from what the last app got wrong", "I didn't start from a blank page. I had designed the WebSAM technician app two years earlier, so its known problems, search nobody could use and touch targets too small for a workshop, were on the list before research began. I reviewed clocking apps such as Connect Team and Clockify, and interviewed technicians and admins across three workshops.", [], ["Competitive analysis"]], ["Define", "One technician’s day", "I framed the app around one technician's day. John opens his jobs, picks a brake pad replacement, checks the vehicle's history, logs the pads from stock, flags a worn rotor for approval, and clocks his time throughout. When he marks it complete, the front desk knows straight away. Nothing on paper, no data entry later, and stock that stays accurate on its own.", [], ["A day in the app"]], ["Ideate", "Three workflows to get right first", "From that day I picked the three workflows that had to work before anything else: clocking on and off, documenting the job, and stocktake. I mapped them in low fidelity, then mid fidelity for testing, with the earlier app's problems as constraints from the start.", [], ["Design process"]], ["Design & prototype", "Built for gloves, noise and no signal", "A technician can only be on one job at a time, so clocking onto a new job closes the last one. Photos attach to the part of the job they belong to and can be annotated. Many workshops are steel sheds with poor signal, so every screen says what's unavailable offline instead of spinning. The app also reshaped the web product: timesheets, photos on the job card, and technician notes.", ["Awmobile2.png", "Awmobile14.png"], ["Three workflows to get right", "Designing for a workshop with no signal", "Notifications", "What it changed on the web side"]], ["Test & validate", "More than ten technicians, on their own phones", "More than ten technicians tested the prototype on their own phones, in their own workshops. Search and filter were redesigned because the first version was hard to use, and I cut date filtering rather than ship it half solved. Paused jobs got their own tab, every target got bigger for workshop hands, and parts search was added.", ["awmobile15.png"], ["What testing changed"]], ["Deliver & measure", "Launched, then reprioritised", "Phase one launched on 4 December on the App Store and Google Play. Today every technician at our customer workshops works from the app on a phone or tablet, so the paper job card is gone. Because technicians clock on and off each job, the workshop sees the hours a job really took, which makes its margin accurate and shows how much capacity is left to accept more work. And because vehicle history, parts and internal notes are on the phone, technicians stop losing time walking to the front desk to look them up. Testing also reordered the roadmap: continuous clocking, creating bookings and approving online bookings mattered more than what we had planned next, so they moved up.", [], ["Launch"]], ["Since launch", "Where a technician spends the day", "Since launch the app has become where a technician spends most of the day. Clocking is continuous with no gaps, admins create and approve bookings from the phone, SmartCheck Pro inspections sit inside the job, and stocktake runs on a scanner. The home screen tracks the day against an 8 hour goal, with a streak badge and a star held back until the technician clocks off, so the celebration never interrupts a job.", ["phones:Dashboard", "html"], ["Continuous time clocking", "Create a new booking", "Approving online bookings", "Inspections inside the job", "Stocktake", "What shipped next"]], ["Reflection", "What I’d do differently", "The technician app is used by every technician at our customer workshops. These are the things I’d change if I started it again.", [], [], ["<b>Test search first.</b> The first search and filter was hard to use, and date filtering was cut rather than shipped half solved. Search is how technicians find their work, so I’d prototype and test it before anything else.", "<b>Plan for the forgotten clock-off.</b> Technicians forgetting to clock off was predictable, but the fix came after launch. I’d design the missed clock-off flow into phase one.", "<b>Check priorities with technicians before committing the roadmap.</b> Testing reordered phase two around continuous clocking and bookings. A short prioritisation session at the start would have got there sooner."]]]};
+const STORIES = {"smartcheck": [["Context", "Turning a paper inspection into a legal digital one", "Every Warrant of Fitness in New Zealand was done on paper: slow, easy to get wrong, and hard to keep records from. Auxo wanted a standalone app that NZTA certified workshops could use from start to finish. I led the UX from research through to handover, with a part time contractor in phase one and on my own since. The whole project hung on one thing: NZTA approving it, so the inspection is legally complete inside the software.", ["ewof_1.png"], ["The problem", "The vision", "Scope, and who I worked with"]], ["Discover", "Watching technicians inspect real vehicles", "I spent time with NZTA certified technicians in their workshops, through interviews, observation and feedback sessions, to see how an inspection really runs and where paper hurts. They wanted checklists that mirror their paper flow, photos as evidence, predefined failure reasons, and a warning before they break a rule. The competitors I looked at were digital checklists that still ended in printing and re-keying. Direct NZTA integration became the difference.", [], ["Understanding the technicians", "Competitive analysis"]], ["Define", "What each finding changed", "Each finding became a design rule. Technicians carry a tablet in a noisy, badly lit workshop, so the app is tablet first with large targets. They start wherever the vehicle lets them, so there is no fixed order, but every mandatory check is still enforced. Bookings link to inspections so nothing is entered twice. Two personas carried this: Mark, the inspector, and Karen, the administrator who answers for the record in an audit.", ["eWOF - Persona.jpg (1 of 2)"], ["Research findings, and what each one changed", "Persona"]], ["Ideate", "The same process, plus a regulator", "Every epic ran through the same seven steps I use on Auxo Workshop, from user journey to handover. The difference was validation. A flow wasn't finished when the team liked it; it had to survive a review against NZTA regulation before anyone built it. I worked from the Auxo Design System from day one, so the app looks and behaves like the rest of the suite.", [], ["Design process"]], ["Design & prototype", "Designing for a tablet in a workshop", "I designed for the iPad first, for touch and legibility, and took the mid fidelity flow from login through inspection to the generated checksheet. This is where it ended up: every section on one screen, a coloured edge when a section is done, warnings and fails shown on the section they belong to, and totals at the top that the technician checks before submitting.", ["tablets:Technician: inspection home", "vid"], ["Initial design, mid fidelity"]], ["Test & validate", "The test that changed the app", "Testing the mid fidelity prototype, before development started, showed the first design was wrong. Inspectors had to scroll the checklist to find each section, which slowed them down and didn't match how they work. I redesigned the main page to show every section at a glance, and workshops can set their own section order. Catching it at prototype stage cost a few screens. The validated prototype then went to NZTA, who approved it.", ["Archive_WOF.png"], ["The iteration that changed the app", "Final prototype and validation"]], ["Deliver & measure", "From epics to the document NZTA needs", "I split the workflow into epics with user stories, acceptance criteria and UI specs, and grew the checklist component in four phases: pass and fail, failure reasons and position, photos on failed items, then photos everywhere. The output is what NZTA and the vehicle owner actually need: a checksheet where a fail and its re-inspection sit together, struck through rather than deleted. SmartCheck Pro is approved and in market, with more than 150 customers, and the busiest workshops complete more than 70 checksheets a day in it. Workshops moved straight from paper checksheets to tablets, and their feedback is consistent: at least 10 minutes saved on every WOF, which turns 40 minutes into 30 and could lift an inspector from $120 to $160 an hour when bookings are full, and custom checksheets they describe as a game changer.", ["WOF_Faild_and_rechecked.png", "html"], ["Building the checklist in phases", "Breaking the flow down for development", "The document at the end of it"]], ["Since launch", "Checksheets workshops build themselves", "Phase two turned one regulated inspection into a tool workshops shape themselves. They build their own checksheets, like a 25 point check or a pre purchase inspection, while the WOF stays locked to the structure NZTA approved. Workshop owners called it a game changer, not for the builder but because results now sit against the vehicle instead of in long notes. I also added a walkaround for marking damage, and I'm researching QMS forms now.", ["checksheet-templates.png"], ["Customise checksheet", "The walkaround", "QMS forms, in research now", "What is next"]], ["Reflection", "What I’d do differently", "SmartCheck Pro worked, and NZTA approved it. Looking back, three things would have made it stronger.", [], [], ["<b>Test in the bay, not just in the office.</b> The final prototype was tested internally before it went to NZTA. I’d put it in front of inspectors in their own workshops first, the same way the section navigation problem was caught.", "<b>Measure the before.</b> The 10 minute saving comes from workshop feedback. I’d time a set of paper inspections before launch, so the saving is something we measured, not something we were told.", "<b>Bring accessibility forward.</b> Touch target and colour issues showed up once technicians were using the product. Checking them in mid fidelity, with gloves and bad light in mind, would have caught them earlier."]]], "auxo-workshop": [["Context", "Thirty years of software, rebuilt as one platform", "Auxo has built software for New Zealand's automotive industry for more than thirty years, across SAM, Orion, webSAM and Systime. Auxo Workshop rebuilds all of it as one platform for New Zealand and Australia. I've been the sole UX designer from concept to delivery, working with eight developers, and later took on Product Owner work too. webSAM gave us a head start: real customers, known pain points, and people to test with.", [], ["Where it started", "What we already knew", "What the platform needed"]], ["Discover", "Software that recorded the day instead of reducing it", "A SWOT analysis of Shop Monkey, Mechanic Desk, Workshop Software and Black Purl showed where the gaps were. Talking to workshops showed the bigger problem: owners doing admin in the evenings and at weekends, because their software recorded the day instead of reducing it. That became the brief for every screen. If it adds a single step to someone's evening, it has failed.", [], ["Competitive analysis", "The challenges workshops actually face"]], ["Define", "Two generations on the same screen", "Two generations run these businesses. The older one, often a mechanic with a partner doing the admin, is used to pen and paper and wants it simple. The newer one is taking over the family business, lives on their phone and wants to modernise. The product has to work for both on the same screen, which ruled out anything that only makes sense to a power user.", [], ["Who we are designing for"]], ["Ideate", "Proving the concept to the board", "Three years of ideas had to become something the board could approve. With the Product Manager and General Manager I mapped the business user journey, ran the brainstorming that shaped a multi-year roadmap, and built low fidelity flows and a prototype. The board approved it and development began. From then on every epic followed seven steps: journey, competitor research, low and mid fidelity, prototype, testing, high fidelity, handover.", ["low-fi.png"], ["History: proving the concept", "Design process"]], ["Design & prototype", "The workboard and the job card", "The workboard reflects how a workshop thinks: vehicles moving through states, not a list of tasks, including Invoiced and Collected, the two states most software leaves out. The job card is where almost everything happens, so it carries a lot without feeling heavy. Behind both sits the Auxo Design System I built on Ant Design, with a UX guideline so eight developers can build consistently when I'm not in the room.", ["workboard-01-2048x1234.jpg"], ["What a workshop sees", "First problem: the job card", "Guidelines and components", "Making a booking", "Availability calendar", "Service templates"]], ["Test & validate", "Testing before high fidelity, and after launch", "User testing is step five of every epic, before high fidelity, with customers matched to our personas, and every feature goes through beta with real workshops before release. Testing didn't stop at launch. Customers told us the smart service templates were too dynamic for some teams, so phase two added fixed templates that do exactly what the workshop sets.", ["quote"], ["Testing with customers"]], ["Deliver & measure", "Live, measured, and played at events", "Auxo Workshop is live with 320+ workshop businesses in New Zealand and Australia, almost all of whom started on pen and paper. Over 90% now take bookings online, which means far fewer phone calls at the front desk, and automated reminders have replaced chasing customers by hand. The price matrix sets each part’s price from its cost, and each workshop owner sets their own overall margin. The margin check flags any line that falls below it, so most workshops now reach the margin they set, and larger brand workshops have told us their revenue is up at least 20% since moving to Auxo Workshop. After release I use Clarity and Userpilot to see how features are really used. I also turned the prototype into a timed game: pick a real task, find your own way through it, beat the clock. It helps customers learn the product faster, and at Capricorn events in Australia more than 350 people played it, and more than 40 potential customers are now in talks to buy.", ["html", "game-timer-running.png"], ["Where it is now", "A game that teaches the product"]], ["Since launch", "Two years of features, one process", "Every feature since launch has run through the same process: multi-day jobs, fixed templates, parts and purchase orders, loan cars, additional contacts, automation, and now AI. Parts ordering is a good example. One job often needs parts from several suppliers, so the admin loads the job's parts once and the system raises a separate purchase order per supplier. For AI my rule is simple: AI drafts, the person decides. Since taking on Product Owner work, I also write the user stories and help prioritise the backlog for these features.", ["aw-purchase-list.png"], ["Multi-day jobs", "Fixed templates, because customers asked", "Parts and inventory", "Loan car management", "Additional contacts", "Automation", "Designing AI into the workshop"]], ["Reflection", "What I’d do differently", "Auxo Workshop is the biggest thing I have designed, and the feedback has taught me as much as the research did.", [], [], ["<b>Design the first month, not just the product.</b> One owner told us they were ready to throw the computer out the window in their first month. Onboarding and data migration deserved the same design attention as the job card. The game came later and helped, but it should have been part of launch.", "<b>Test automation levels with more kinds of workshop.</b> Smart templates suited many teams but felt too dynamic for admin heavy and franchise workshops, which is why fixed templates followed. Testing with those workshops earlier would have shipped both options together.", "<b>Instrument from day one.</b> Clarity and Userpilot came in after release, so some early decisions have no baseline to compare against. I’d set up the key events before the first feature shipped."]]], "auxo-mobile": [["Context", "Getting technicians off paper job cards", "Technicians hold on to paper job cards right up until one gets lost, arrives unreadable, or turns into admin for someone else. Auxo Workshop Mobile puts the job on their phone instead: their jobs, the clock, parts, photos and notes. I was the sole UX designer, with part time contract support early on, from September 2024 until phase one launched on 4 December.", ["Auxo-Workshop-Mobile.jpg"], ["The idea"]], ["Discover", "Starting from what the last app got wrong", "I didn't start from a blank page. I had designed the WebSAM technician app two years earlier, so its known problems, search nobody could use and touch targets too small for a workshop, were on the list before research began. I reviewed clocking apps such as Connect Team and Clockify, and interviewed technicians and admins across three workshops.", [], ["Competitive analysis"]], ["Define", "One technician’s day", "I framed the app around one technician's day. John opens his jobs, picks a brake pad replacement, checks the vehicle's history, logs the pads from stock, flags a worn rotor for approval, and clocks his time throughout. When he marks it complete, the front desk knows straight away. Nothing on paper, no data entry later, and stock that stays accurate on its own.", [], ["A day in the app"]], ["Ideate", "Three workflows to get right first", "From that day I picked the three workflows that had to work before anything else: clocking on and off, documenting the job, and stocktake. I mapped them in low fidelity, then mid fidelity for testing, with the earlier app's problems as constraints from the start.", [], ["Design process"]], ["Design & prototype", "Built for gloves, noise and no signal", "A technician can only be on one job at a time, so clocking onto a new job closes the last one. Photos attach to the part of the job they belong to and can be annotated. Many workshops are steel sheds with poor signal, so every screen says what's unavailable offline instead of spinning. The app also reshaped the web product: timesheets, photos on the job card, and technician notes.", ["Awmobile2.png", "Awmobile14.png"], ["Three workflows to get right", "Designing for a workshop with no signal", "Notifications", "What it changed on the web side"]], ["Test & validate", "More than ten technicians, on their own phones", "More than ten technicians tested the prototype on their own phones, in their own workshops. Search and filter were redesigned because the first version was hard to use, and I cut date filtering rather than ship it half solved. Paused jobs got their own tab, every target got bigger for workshop hands, and parts search was added.", ["awmobile15.png"], ["What testing changed"]], ["Deliver & measure", "Launched, then reprioritised", "Phase one launched on 4 December on the App Store and Google Play. Today every technician at our customer workshops works from the app on a phone or tablet, so the paper job card is gone. Because technicians clock on and off each job, the workshop sees the hours a job really took, which makes its margin accurate and shows how much capacity is left to accept more work. And because vehicle history, parts and internal notes are on the phone, technicians stop losing time walking to the front desk to look them up. Testing also reordered the roadmap: continuous clocking, creating bookings and approving online bookings mattered more than what we had planned next, so they moved up.", [], ["Launch"]], ["Since launch", "Where a technician spends the day", "Since launch the app has become where a technician spends most of the day. Clocking is continuous with no gaps, admins create and approve bookings from the phone, SmartCheck Pro inspections sit inside the job, and stocktake runs on a scanner. The home screen tracks the day against an 8 hour goal, with a streak badge and a star held back until the technician clocks off, so the celebration never interrupts a job.", ["phones:Dashboard", "html"], ["Continuous time clocking", "Create a new booking", "Approving online bookings", "Inspections inside the job", "Stocktake", "What shipped next"]], ["Reflection", "What I’d do differently", "The technician app is used by every technician at our customer workshops. These are the things I’d change if I started it again.", [], [], ["<b>Test search first.</b> The first search and filter was hard to use, and date filtering was cut rather than shipped half solved. Search is how technicians find their work, so I’d prototype and test it before anything else.", "<b>Plan for the forgotten clock-off.</b> Technicians forgetting to clock off was predictable, but the fix came after launch. I’d design the missed clock-off flow into phase one.", "<b>Check priorities with technicians before committing the roadmap.</b> Testing reordered phase two around continuous clocking and bookings. A short prioritisation session at the start would have got there sooner."]]]};
 
 
 /* A case study with a story reads as one short stage at a time. Each stage
@@ -3695,7 +3849,7 @@ function pageCase(id){
     <header class="case-hd"${c.head?` style="background:${c.head}"`:''}>
       <div class="wrap">
         <a class="back" href="#/">&#8592; All work</a>
-        <p class="mono case-tagline">${c.archive?`Archive &nbsp;/&nbsp; ${c.year}`:c.no} &nbsp;/&nbsp; ${c.tag}</p>
+        <p class="mono case-tagline">${c.archive?`Archive &nbsp;/&nbsp; ${c.year} &nbsp;/&nbsp; `:''}${c.tag}</p>
         <h1 class="dsp">${c.title}</h1>
         <p class="lede">${c.lede}</p>
         <dl class="spec">
@@ -3718,7 +3872,7 @@ function pageCase(id){
           const heads = STORIES[c.id] ? STORIES[c.id].map(x=>({t:'h',v:x[1],ph:x[0]})) : c.blocks.filter(b => b.t === 'h');
           const steps = DT_STEPS.map((st,i) => {
             const h = heads.find(b => (b.ph || PHASE[b.v]) === st);
-            return h ? `<li><a href="#${slug(h.v)}"><span class="dt-no">0${i+1}</span><span class="dt-lb">${st}</span><span class="dt-sec">${h.v}</span></a></li>` : '';
+            return h ? `<li><a href="#${slug(h.v)}"><span class="dt-lb">${st}</span><span class="dt-sec">${h.v}</span></a></li>` : '';
           }).join('');
           return `<nav class="dt rv" style="--ca:${c.accent||'#5348E8'}" aria-label="Design thinking steps in this project"><span class="mono dt-h">How this project ran</span><ol>${steps}</ol></nav>`;
         })()}
@@ -3788,7 +3942,7 @@ function pageAI(){
           'I create storyboards in Claude Design that developers, including back-end engineers, use to build features across the front end and back end. For smaller front-end changes I make the change myself in GitHub.',
           ['Claude Design','GitHub'])}
         ${step('06','Deliver and teach','A game that teaches the product',
-          'I built an interactive Auxo Workshop game with Claude. Players race the clock through real tasks like making a booking or raising a purchase order. Customer success uses it for training, and sales and marketing use it at events.',
+          'I built an interactive Auxo Workshop game with Claude. Players race the clock through real tasks like making a booking or raising a purchase order. Customer success uses it for training, and at Capricorn events in Australia more than 350 people played it and more than 40 potential customers are now in talks to buy.',
           ['Claude'],['Play the game','https://claude.ai/artifact/5nR8JWhaqANTgJQJZ6c9yv'])}
       </div>
 
@@ -3905,7 +4059,7 @@ function pageCV(){
       </div>
       <figure class="cv-photo">
         <img src="${A.portrait}" alt="Mona Moazed" width="680" height="850">
-        <figcaption><span class="status"><i></i> Open to opportunities</span><span class="cv-where">Albany, Auckland</span></figcaption>
+        <figcaption><span class="status"><i></i> Open to Product Designer roles</span><span class="cv-where">Albany, Auckland</span></figcaption>
       </figure>
     </div>
   </section>
@@ -3942,7 +4096,7 @@ function pageCV(){
               <p class="role-org">Auxo Software, Auckland &middot; Solo Product Designer, supported by a part time contractor</p>
               <div class="cv-chips"><span>Auxo Workshop, web and mobile</span><span>Technician app, iOS and Android</span><span>SmartCheck Pro (e-WOF)</span></div>
               <h4 class="cv-sub">What I shipped</h4>
-              <ul class="blk-ul"><li>Designed SmartCheck Pro (e-WOF), a digital Warrant of Fitness inspection app that won NZTA approval to replace pen and paper inspections in certified workshops.</li><li>Designed customisable checksheets for SmartCheck Pro, taking them from research to a working prototype that balances flexibility for businesses with simplicity for field technicians.</li><li>Designed and released the technician app for iOS and Android. All Auxo Workshop customers now use it, and it connects to SmartCheck Pro.</li><li>Found that many technicians struggled with small buttons and colour differences, so I checked touch target sizes and colour vision and changed the design.</li><li>Built an interactive Auxo Workshop game with Claude AI. Customer success, sales and marketing use it for training and at events to show prospects how the product works.</li><li>Started an early stage concept for a consumer app connecting vehicle owners with workshops.</li><li>Recently began transitioning into a Product Owner role, contributing to backlog prioritisation and writing user stories alongside my design work.</li><li>Improved usability for our growing base of 320+ customers.</li></ul>
+              <ul class="blk-ul"><li>Designed SmartCheck Pro (e-WOF), a digital Warrant of Fitness inspection app that won NZTA approval to replace pen and paper inspections in certified workshops.</li><li>Designed customisable checksheets for SmartCheck Pro, taking them from research to a working prototype that balances flexibility for businesses with simplicity for field technicians.</li><li>Designed and released the technician app for iOS and Android. All Auxo Workshop customers now use it, and it connects to SmartCheck Pro.</li><li>Found that many technicians struggled with small buttons and colour differences, so I checked touch target sizes and colour vision and changed the design.</li><li>Built an interactive Auxo Workshop game with Claude AI. Customer success, sales and marketing use it for training and at events; at Capricorn events in Australia more than 350 people played it and more than 40 potential customers are now in talks to buy.</li><li>Started an early stage concept for a consumer app connecting vehicle owners with workshops.</li><li>Recently began transitioning into a Product Owner role, contributing to backlog prioritisation and writing user stories alongside my design work.</li><li>Improved usability for our growing base of 320+ customers.</li></ul>
               <details class="more cv-more">
                 <summary><span class="more-open">How I work</span><span class="more-close">Show less</span><span class="more-list">Research, prototyping, testing, design system, data, code and AI</span></summary>
                 <div class="more-in"><ul class="blk-ul"><li>Led end to end UX design across multiple products, managing the full lifecycle from discovery to delivery as the sole UX designer.</li><li>Conducted qualitative and quantitative user research, including stakeholder interviews and behavioural analysis, to inform product strategy and design decisions.</li><li>Created key UX deliverables including personas, journey maps, user flows and information architecture to support scalable product design.</li><li>Designed low to high fidelity wireframes and interactive prototypes in Figma, improving clarity and usability of core workflows.</li><li>Planned and ran usability testing sessions, identifying issues and reducing friction across key user journeys.</li><li>Established and maintained the Auxo Design System, improving consistency and reducing design duplication.</li><li>Analysed user behaviour using Clarity and Userpilot to identify drop-off points and adoption trends, then drove redesigns based on the data.</li><li>Collaborated closely with developers and product teams to ensure design feasibility and smooth implementation of features.</li><li>Make front end code changes directly in GitHub, and create storyboards in Claude Design that developers, including back end engineers, use to build features across the front end and back end.</li><li>Use AI tools (Claude, Figma Make, UX Pilot, ChatGPT) to speed up ideation, prototyping and research synthesis.</li></ul><button type="button" class="more-end">Show less</button></div>
@@ -4294,6 +4448,7 @@ function route(path){
   observe();
   trackSections();
   initReel();
+  initCine();
   wireContact();
   document.getElementById('nav').classList.remove('open');
   document.getElementById('burger').setAttribute('aria-expanded','false');
@@ -4346,6 +4501,76 @@ function observe(){
      0.62 - 0.88  UX rises and brightens
      0.86 - 1.00  stage six lights up
    ============================================================ */
+/* ============ cinematic story engine ============
+   One number, p (0 to 1), comes from how far the pinned section has
+   scrolled. Every device, chip and caption is drawn from it. */
+let cineCleanup=null;
+function initCine(){
+  if(cineCleanup){cineCleanup();cineCleanup=null;}
+  const sec=document.getElementById('cine'); if(!sec) return;
+  const stage=sec.querySelector('.cine-stage');
+  const els={}; sec.querySelectorAll('[data-k]').forEach(e=>els[e.dataset.k]=e);
+  const caps=[...sec.querySelectorAll('.cine-cap')], chips=[...sec.querySelectorAll('.cine-chip')];
+  const rail=[...sec.querySelectorAll('.cine-rail li')], bars=[...sec.querySelectorAll('.cine-rail i b')], playBtn=sec.querySelector('.cine-play');
+  const ticks=[...sec.querySelectorAll('.ticks path')], scan=sec.querySelector('.clip-scan');
+  const blobs=[...sec.querySelectorAll('.cine-bg i')], grid=sec.querySelector('.cine-grid');
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* keyframes: [p, x, y, scale, rotate, opacity]; x and y are fractions of the stage size */
+  const K={
+    clip:[[0,0,.04,1,-5,1],[.12,0,0,1,-2,1],[.22,0,0,1,-1,1],[.32,-.08,.1,.72,-16,0]],
+    tab:[[.2,.02,.7,.86,8,0],[.33,0,0,1.18,0,1],[.46,0,0,1.18,0,1],[.6,.25,.17,.78,0,1],[1,.26,.18,.76,0,1]],
+    lap:[[.44,-.5,.06,.9,0,0],[.58,-.08,-.06,1,0,1],[1,-.09,-.07,.98,0,1]],
+    ph:[[.66,.6,.4,1,12,0],[.8,.37,.06,1.12,0,1],[1,.37,.06,1.1,0,1]]
+  };
+  const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+  function at(frames,p){
+    if(p<=frames[0][0]) return frames[0];
+    for(let i=1;i<frames.length;i++){
+      const a=frames[i-1],b=frames[i];
+      if(p<=b[0]){const t=ease((p-a[0])/(b[0]-a[0]));return a.map((v,k)=>k?v+(b[k]-v)*t:p);}
+    }
+    return frames[frames.length-1];
+  }
+  const ranges=[0,.24,.46,.7,.88,1.01];
+  let last=-1;
+  function render(p){
+    const W=stage.clientWidth,H=stage.clientHeight;
+    for(const k in K){const e=els[k]; if(!e) continue; const [,x,y,s,r,o]=at(K[k],p);
+      e.style.transform=`translate(-50%,-50%) translate(${x*W}px,${y*H}px) scale(${s}) rotate(${r}deg)`;
+      e.style.opacity=o; e.style.zIndex=k==='ph'?4:k==='tab'?3:k==='lap'?2:1;}
+    ticks.forEach((t,i)=>{const s=.02+i*.028,v=Math.min(1,Math.max(0,(p-s)/.03));t.style.strokeDashoffset=40*(1-v);});
+    const sp=Math.min(1,Math.max(0,(p-.2)/.1)); scan.style.top=(-20+sp*120)+'%'; scan.style.opacity=sp>0&&sp<1?1:0;
+    let idx=ranges.findIndex((r,i)=>p>=r&&p<ranges[i+1]); if(idx<0) idx=4;
+    if(idx!==last){caps.forEach((c,i)=>c.classList.toggle('on',i===idx)); rail.forEach((l,i)=>l.classList.toggle('on',i===idx)); last=idx;}
+    bars.forEach((b,i)=>{const a=ranges[i],z=Math.min(1,ranges[i+1]);b.style.setProperty('--f',Math.min(1,Math.max(0,(p-a)/(z-a))).toFixed(3));});
+    chips.forEach(c=>c.classList.toggle('on',p>=+c.dataset.in&&p<+c.dataset.out));
+    blobs.forEach((b,i)=>b.style.transform=`translate(${Math.sin(p*6+i*2)*40}px,${Math.cos(p*5+i)*30-p*60}px)`);
+    grid.style.transform=`translateY(${-p*120}px)`;
+  }
+  /* plays like a short film: about 20 seconds, holds on the last scene, then loops */
+  const DUR=20000, HOLD=3500;
+  let p=0, playing=!reduce, visible=false, raf=0, lastT=0, held=0;
+  function frame(t){
+    if(!lastT) lastT=t; const dt=t-lastT; lastT=t;
+    if(playing&&visible){
+      if(p<1){p=Math.min(1,p+dt/DUR);}
+      else{held+=dt; if(held>HOLD){held=0;p=0;}}
+      render(p);
+    }
+    raf=requestAnimationFrame(frame);
+  }
+  function setPlaying(v){playing=v;playBtn.classList.toggle('paused',!v);playBtn.setAttribute('aria-label',v?'Pause the story':'Play the story');}
+  playBtn.addEventListener('click',()=>{ if(p>=1){p=0;held=0;} setPlaying(!playing); });
+  const GO=[0,.38,.6,.81,.92];
+  sec.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>{p=GO[+b.dataset.go];held=0;render(p);}));
+  const vio=new IntersectionObserver(es=>es.forEach(e=>{visible=e.isIntersecting;lastT=0;}),{threshold:.35});
+  vio.observe(sec);
+  const onResize=()=>render(p); window.addEventListener('resize',onResize);
+  if(reduce){p=1;setPlaying(false);}
+  render(p); raf=requestAnimationFrame(frame);
+  cineCleanup=()=>{cancelAnimationFrame(raf);vio.disconnect();window.removeEventListener('resize',onResize);};
+}
+
 let reelCleanup = null;
 
 function initReel(){
@@ -4909,6 +5134,33 @@ window.addEventListener('hashchange', function(){ route(readPath()); });
   setTimeout(scan,400);
 })();
 
+
+/* stat rows: every number counts up once, when the row scrolls into view */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function run(row){
+    if(row.dataset.counted) return; row.dataset.counted='1';
+    if(reduce){row.classList.add('in');return;}
+    row.classList.add('in');
+    row.querySelectorAll('.stat b, .cv-stats dt').forEach(function(b,i){
+      var w=document.createTreeWalker(b,NodeFilter.SHOW_TEXT),n,nodes=[];
+      while(n=w.nextNode()) if(/\d/.test(n.nodeValue)) nodes.push({n:n,src:n.nodeValue});
+      if(!nodes.length) return;
+      nodes.forEach(function(o){o.n.nodeValue=o.src.replace(/\d+/g,function(d){return '0'.padStart(d.length>1?1:1,'0')})});
+      var t0=null,dur=1300,delay=i*110+150;
+      setTimeout(function(){requestAnimationFrame(function step(ts){
+        if(!t0)t0=ts; var k=Math.min(1,(ts-t0)/dur), e=1-Math.pow(1-k,3);
+        nodes.forEach(function(o){o.n.nodeValue=o.src.replace(/\d+/g,function(d){return String(Math.round(+d*e))})});
+        if(k<1) requestAnimationFrame(step);
+      })},delay);
+    });
+  }
+  var sio=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){run(x.target);sio.unobserve(x.target)}})},{threshold:.4});
+  function scan(){document.querySelectorAll('.stats, .cv-stats').forEach(function(r){if(!r.dataset.counted) sio.observe(r)})}
+  window.addEventListener('hashchange',function(){setTimeout(scan,150)});
+  setTimeout(scan,400);
+})();
 /* reading progress bar on case studies */
 (function(){
   var bar=document.createElement('div'); bar.className='read-progress'; bar.setAttribute('aria-hidden','true');
