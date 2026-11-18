@@ -2121,7 +2121,7 @@ const PHONES=(v,cap)=>({t:'phones',v,cap});
 
 const CASES = [
 {
-  id:'auxo-workshop', thumb:'tileAW.webp', accent:'#00756A', head:"radial-gradient(1000px 480px at 86% -14%, rgba(0,187,165,.30), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(38,142,239,.16), transparent 60%), linear-gradient(160deg,#001A3A,#03284C 60%,#06192E)", tile:'Auxo Workshop', tint:'linear-gradient(145deg,#001A44,#00396B 55%,#00BBA5)', claim:"I designed the platform 320+ workshops run their day on",
+  id:'auxo-workshop', thumb:'tileAW.webp?v=2', accent:'#00756A', head:"radial-gradient(1000px 480px at 86% -14%, rgba(0,187,165,.30), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(38,142,239,.16), transparent 60%), linear-gradient(160deg,#001A3A,#03284C 60%,#06192E)", tile:'Auxo Workshop', tint:'linear-gradient(145deg,#001A44,#00396B 55%,#00BBA5)', claim:"I designed the platform 320+ workshops run their day on",
   brief:{problem:"Thirty years of Auxo products, and software that recorded a workshop's day instead of reducing it.",role:"Sole UX designer across the platform from concept to delivery, later also Product Owner. Established the Auxo Design System.",outcome:"320+ workshops in New Zealand and Australia have moved off paper onto it. Over 90% take bookings online, and larger brand workshops report revenue up at least 20%."}, no:'01', tag:'Platform design / Platform rebuild',
   title:'Auxo Workshop',
   chip:['chip-live','Live, 320+ businesses'],
@@ -2926,7 +2926,7 @@ const CASES = [
   ]
 },
 {
-  id:'fresh-market', thumb:'arcFresh.webp', archive:true, year:'2020', accent:'#3D7A14', head:"radial-gradient(1000px 480px at 86% -14%, rgba(140,198,63,.28), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(31,122,77,.26), transparent 60%), linear-gradient(160deg,#0A2418,#0F3323 60%,#081C13)", tile:'Fresh Market', tint:'linear-gradient(145deg,#0E3524,#1F7A4D 55%,#8CC63F)', claim:"I made buying fruit online feel like standing in the shop",
+  id:'fresh-market', thumb:'arcFresh.webp?v=2', archive:true, year:'2020', accent:'#3D7A14', head:"radial-gradient(1000px 480px at 86% -14%, rgba(140,198,63,.28), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(31,122,77,.26), transparent 60%), linear-gradient(160deg,#0A2418,#0F3323 60%,#081C13)", tile:'Fresh Market', tint:'linear-gradient(145deg,#0E3524,#1F7A4D 55%,#8CC63F)', claim:"I made buying fruit online feel like standing in the shop",
   brief:{problem:"People buy almost anything online, then walk to a shop for tomatoes, because being there is the only way to judge the produce.",role:"UX designer in a team of four. Research, journey mapping, ideation and usability testing.",outcome:"Six validated design concepts, including live shopping and layered substitution, plus a card sorted category structure the competitors did not have."}, no:'05', tag:'E-commerce / Research led',
   title:'Fresh Market',
   chip:['chip-concept','Concept project'],
@@ -3039,7 +3039,7 @@ const CASES = [
   ]
 },
 {
-  id:'artesa', thumb:'arcArtesa.webp', archive:true, year:'2021', accent:'#8A4370', head:"radial-gradient(1000px 480px at 86% -14%, rgba(211,162,191,.30), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(122,59,102,.30), transparent 60%), linear-gradient(160deg,#1E0E19,#2E1528 60%,#170B13)", tile:'Artesa Design', tint:'linear-gradient(145deg,#2A1424,#7A3B66 55%,#D3A2BF)', claim:"I named a business, then built the shop around it",
+  id:'artesa', thumb:'arcArtesa.webp?v=2', archive:true, year:'2021', accent:'#8A4370', head:"radial-gradient(1000px 480px at 86% -14%, rgba(211,162,191,.30), transparent 62%), radial-gradient(720px 420px at 2% 4%, rgba(122,59,102,.30), transparent 60%), linear-gradient(160deg,#1E0E19,#2E1528 60%,#170B13)", tile:'Artesa Design', tint:'linear-gradient(145deg,#2A1424,#7A3B66 55%,#D3A2BF)', claim:"I named a business, then built the shop around it",
   brief:{problem:"A business with no name, no brand and a website that had to sell handmade products and a design service at the same time.",role:"UX designer in a team of two, from market research and naming through to information architecture and prototype.",outcome:"A brand name validated across two surveys with 121 respondents, a logo, and a card sorted shop structure ready for Shopify."}, no:'06', tag:'Brand and e-commerce',
   title:'Artesa Design',
   chip:['chip-concept','Concept project'],
@@ -3682,31 +3682,6 @@ function pageHome(){
     </div>
   </section>
 
-  <section class="band-tight" id="work">
-    <div class="wrap">
-      <div class="sec-head rv">
-        <h2>Things I've made</h2>
-      </div>
-      <div class="index">
-        ${CASES.filter(c=>!c.archive).map(c=>`
-        <a class="job" href="#/case/${c.id}">
-          <span class="job-thumb" aria-hidden="true">${
-            c.thumb
-              ? `<img src="${c.thumb}" alt="" loading="lazy">`
-              : `<span class="job-tile" style="background:${c.tint}"><i>${c.tile}</i></span>`
-          }</span>
-          <span class="job-text">
-            <span class="job-claim">${c.claim}</span>
-            <span class="job-name">${c.title} &middot; ${c.tag}</span>
-            <span class="job-sum">${c.sum}</span>
-          </span>
-          <span class="job-chip"><span class="chip ${c.chip[0]}">${c.chip[1]}</span></span>
-          <span class="job-arrow" aria-hidden="true">&#8594;</span>
-        </a>`).join('')}
-      </div>
-    </div>
-  </section>
-
   <section class="cine" id="cine" aria-labelledby="cineH">
     <div class="cine-pin">
       <div class="cine-bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i><span class="cine-grid"></span><span class="cine-grain"></span></div>
@@ -3757,6 +3732,32 @@ function pageHome(){
       </div>
     </div>
   </section>
+
+  <section class="band-tight" id="work">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <h2>Projects</h2>
+      </div>
+      <div class="index">
+        ${CASES.filter(c=>!c.archive).map(c=>`
+        <a class="job" href="#/case/${c.id}">
+          <span class="job-thumb" aria-hidden="true">${
+            c.thumb
+              ? `<img src="${c.thumb}" alt="" loading="lazy">`
+              : `<span class="job-tile" style="background:${c.tint}"><i>${c.tile}</i></span>`
+          }</span>
+          <span class="job-text">
+            <span class="job-claim">${c.claim}</span>
+            <span class="job-name">${c.title} &middot; ${c.tag}</span>
+            <span class="job-sum">${c.sum}</span>
+          </span>
+          <span class="job-chip"><span class="chip ${c.chip[0]}">${c.chip[1]}</span></span>
+          <span class="job-arrow" aria-hidden="true">&#8594;</span>
+        </a>`).join('')}
+      </div>
+    </div>
+  </section>
+
 
   <section class="band-tight archive" id="archive">
     <div class="wrap">
